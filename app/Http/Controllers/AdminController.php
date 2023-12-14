@@ -7,6 +7,8 @@ use App\Models\Gallery;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\GalleryRequest;
+use App\Models\Application;
+use App\Models\Inquire;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
@@ -33,10 +35,25 @@ class AdminController extends Controller
     }
 
     public function application(){
-        return view('admin.application');
+        return view('admin.application')->with([
+            'applicants' => Application::all()
+        ]);
+    }
+
+    public function show_details_applicant(int $applicant_id){
+        return view('admin.ShowView.ApplicantDetails')->with([
+            'data'=>Application::find($applicant_id)->first()
+        ]);
+    }
+    public function show_details_inquire(int $inquire_id){
+        return view('admin.ShowView.InquireDetails')->with([
+            'data'=>Inquire::find($inquire_id)->first()
+        ]);
     }
     public function inquiry(){
-        return view('admin.inquire');
+        return view('admin.inquire')->with([
+            'inquiries' => Inquire::all()
+        ]);
     }
 
     public function upload(GalleryRequest $request){
