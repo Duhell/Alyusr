@@ -69,12 +69,12 @@
 
                         <li class="nav-item my-2"><a href="/contact" class="nav-link">Contact</a></li>
                         <li class="nav-item mx-2">
-                            <a href="/application" class="btn btn-main-2 btn-icon btn-round-full my-2">
+                            <a wire:navigate href="/application" class="btn btn-main-2 btn-icon btn-round-full my-2">
                                 Apply Now
                             </a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a href="{{ route('sendInquiry') }}" class="btn btn-main-2 btn-icon btn-round-full my-2">
+                            <a wire:navigate href="{{ route('sendInquiry') }}" class="btn btn-main-2 btn-icon btn-round-full my-2">
                                 Inquire Now
                             </a>
                         </li>

@@ -14,6 +14,10 @@ class Inquire extends Model
         'contactNo',
         'companyRegistration',
         'email',
-        'message'
+        'message',
+        'inquireDocs',
+        'national_id',
+        'company_registration',
+        'otherDocs'
     ];
 }

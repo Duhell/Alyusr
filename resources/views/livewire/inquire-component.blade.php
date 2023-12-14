@@ -1,55 +1,73 @@
 <div class="w-[1228px] mx-auto">
-    <p class="font-semibold text-2xl">Inquire Form</p>
     @if (session('success'))
-        <span class="text-green-600">{{ session('success') }}</span>
+    <div class="alert alert-success" role="alert">
+        <p>Notification</p>
+        <p>{{ session('success') }}</p>
+      </div>
     @endif
-    <form  wire:submit="inquire_save">
-        @csrf
-        <div>
-            <label>Full Name</label>
-            <input required autocomplete="off" wire:model="fullName" type="text">
-        </div>
+    @if ($errors->any)
 
-        <div>
-            <label>Contact No.</label>
-            <input required autocomplete="off" wire:model="contactNo" type="text">
-        </div>
+    @endif
+    <section>
+        <div class="container">
+            <div class="row mt-5 mb-5">
+                <div class="col-md-8 offset-md-2">
+                    <form wire:submit="inquire_save">
+                        @csrf
+                        <div class="row">
+                            <div class="col-12 mt-2">
+                                <label>Fullname/الاسم الكامل</label>
+                                <input type="text" class="form-control" wire:model="fullName">
+                            </div>
+                            <div class="col-6 mt-2">
+                                <label>Contact No. / رقم الاتصال</label>
+                                <input type="text" class="form-control" wire:model="contactNo">
+                            </div>
+                            <div class="col-6 mt-2">
+                                <label>Email / البريد الإلكتروني</label>
+                                <input type="email" class="form-control" wire:model="email">
+                            </div>
+                            <div class="col-6 mt-2">
+                                <label>Company No. / Company Registration / رقم الشركة</label>
+                                <input type="email" class="form-control" wire:model="companyRegistration">
+                            </div>
+                            <!-- File Input -->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6 mt-2">
+                                        <label>Inquiry Documents/وثائق الاستفسار</label>
+                                        <input type="file" class="form-control" wire:model="files.inquireDocs" id="inquiry_document">
+                                    </div>
+                                    <div class="col-md-6 mt-2">
+                                        <label>National I.d/ الهويه الوطنيه</label>
+                                        <input type="file" class="form-control" wire:model="files.national_id" id="national_id">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mt-2">
+                                        <label>Company  Registration/تسجيل الشريكة</label>
+                                        <input type="file" class="form-control" wire:model="files.company_registration" id="company_registration">
+                                    </div>
+                                    <div class="col-md-6 mt-2">
+                                        <label>Other documents/وثائق أخرى</label>
+                                        <input type="file" class="form-control" wire:model="files.otherDocs" id="other_document">
+                                    </div>
+                                </div>
+                            </div>
+                            <div wire:loading>Uploading...</div>
 
-        <div>
-            <label>Email</label>
-            <input required autocomplete="off" wire:model="email" type="email">
+                            <!-- End of File Input -->
+                            <div class="col-12 mt-2">
+                                <label>Message/رسالة</label>
+                                <textarea class="form-control" rows="10" wire:model="message"></textarea>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <button type="submit" class="btn btn-primary w-100">Submit Inquiry</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <div>
-            <label>Company No. / Company Registration</label>
-            <input required autocomplete="off" wire:model="companyRegistration" type="text">
-        </div>
-
-        <div>
-            <label>Inquire Documents</label>
-            <input wire:model="files.inquireDocs" type="file">
-        </div>
-
-        <div>
-            <label>National ID</label>
-            <input wire:model="files.national_id" type="file">
-        </div>
-
-        <div>
-            <label>Company Registration</label>
-            <input   wire:model="files.company_registration" type="file">
-        </div>
-
-        <div>
-            <label>Other Documents</label>
-            <input   wire:model="files.otherDocs" type="file">
-        </div>
-
-        <div>
-            <label>Message</label>
-            <textarea wire:model="message"  rows="10"></textarea>
-        </div>
-
-        <button type="submit">Submit</button>
-    </form>
+    </section>
 </div>

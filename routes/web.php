@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', \App\Livewire\LandingComponent::class);
-Route::get('/inquire', \App\Livewire\InquireComponent::class);
+Route::get('/inquire', \App\Livewire\InquireComponent::class)->name('sendInquiry');
 Route::get('/about', \App\Livewire\AboutPage::class);
+Route::get('/application', \App\Livewire\ApplicationComponent::class)->name('sendApplication');
 Route::get('/gallery/{tag}', \App\Livewire\GalleryPage::class);
 
 // Admin

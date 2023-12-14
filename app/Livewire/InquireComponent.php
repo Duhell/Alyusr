@@ -4,9 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Inquire;
 use Livewire\Component;
-use Livewire\Attributes\Rule;
 use Livewire\WithFileUploads;
-use Livewire\Attributes\Validate;
 
 class InquireComponent extends Component
 {
@@ -38,7 +36,6 @@ class InquireComponent extends Component
         }
         $inquiry->save();
 
-        //$this->reset();
         $this->saveFiles($inquiry);
     }
 
@@ -46,11 +43,15 @@ class InquireComponent extends Component
         $this->validate([
            'files.*' => "file|max:1024"
         ]);
+        // Create a new folder
+        $FolderName = $inquiry->fullName . '_' . date('F-d-Y');
 
-        foreach($this->files as $file){
-            $file->store('UploadedDocuments','public');
+        foreach($this->files as $field => $file){
+            $FileName  = $inquiry->fullName . "_" . $file->getClientOriginalName() . "_" . date("F-d-Y");
+            $FilePath = $file->storeAs('UploadedInquiryDocuments/'.$FolderName,$FileName,'public');
+            $inquiry->$field = $FilePath;
         }
-
+        $inquiry->save();
         $this->reset();
         session()->flash('success',"upload success");
     }

@@ -18,6 +18,10 @@ return new class extends Migration
             $table->bigInteger('contactNo')->nullable();
             $table->string('companyRegistration')->nullable();
             $table->string('message')->nullable();
+            $table->string('inquireDocs')->nullable();
+            $table->string('national_id')->nullable();
+            $table->string('company_registration')->nullable();
+            $table->string('otherDocs')->nullable();
             $table->timestamps();
         });
     }
