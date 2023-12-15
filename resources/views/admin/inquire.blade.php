@@ -1,6 +1,6 @@
 @extends('admin.layout.AdminLayout')
 @section('contents')
-<div class="col py-3">
+<div style="height: 600px;overflow-y:auto;padding:2em;" class="col">
     <div class="mt-4">
         <h1 class="display-4">Inquiries</h1>
         @if (session('success'))
@@ -12,11 +12,11 @@
         <table class="table table-striped table-hover mt-4">
             <thead class="thead-dark">
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Full Name</th>
-                <th scope="col">Phone Number</th>
-                <th scope="col">Inquire Date</th>
-                <th scope="col">Action</th>
+                <th class="text-light" style="background: #23272e;" scope="col">#</th>
+                <th class="text-light" style="background: #23272e;" scope="col">Full Name</th>
+                <th class="text-light" style="background: #23272e;" scope="col">Phone Number</th>
+                <th class="text-light" style="background: #23272e;" scope="col">Inquire Date</th>
+                <th class="text-light" style="background: #23272e;" scope="col">Action</th>
               </tr>
             </thead>
             <tbody>

@@ -17,7 +17,6 @@ class Application extends Model
       'Email',
       'FileResume',
       'CoverLetter',
-
-
+      'Address'
     ];
 }

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('national_id')->nullable();
             $table->string('company_registration')->nullable();
             $table->string('otherDocs')->nullable();
+            $table->string('address')->nullable();
             $table->timestamps();
         });
     }

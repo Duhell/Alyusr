@@ -1,8 +1,9 @@
 @extends('admin.layout.AdminLayout')
 @section('contents')
-<div style="height: 600px;overflow-y:auto;" class="col py-3">
+<div style="height: 600px;overflow-y:auto; padding:2em;" class="col">
     <h2>Dashboard</h2>
-    <div class="container d-flex gap-3 align-items-center">
+    <h6>Welcome Admin</h6>
+    <div class="container mt-5 d-flex gap-3 align-items-center">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">{{ $totalApplicants }}</h5>

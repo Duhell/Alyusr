@@ -20,8 +20,7 @@
                     <form wire:submit="SaveApplication" enctype="multipart/form-data">
                         @if (session('success'))
                         <div class="alert alert-success" role="alert">
-                            <p>Notification</p>
-                            <p>{{ session('success') }}</p>
+                            <h3>{{ session('success') }}</h3>
                           </div>
                         @endif
                         @if ($errors->any())

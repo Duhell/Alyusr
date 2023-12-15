@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('Email')->nullable();
             $table->string('FileResume')->nullable();
             $table->text('CoverLetter')->nullable();
+            $table->string('Address')->nullable();
             $table->timestamps();
         });
     }

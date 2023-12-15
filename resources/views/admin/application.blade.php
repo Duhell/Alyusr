@@ -1,7 +1,7 @@
 @extends('admin.layout.AdminLayout')
 @section('contents')
 
-<div class="col py-3">
+<div style="height: 600px;overflow-y:auto;padding:2em;" class="col">
     <div class="mt-4">
         <h1>Applicants</h1>
         @if (session('success'))
@@ -11,25 +11,25 @@
         @endif
         <br>
         <table class="table mt-4">
-            <thead>
+            <thead >
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Full Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Applied Date</th>
-                <th scope="col">Action</th>
+                <th class="text-light" style="background: #23272e;" scope="col">#</th>
+                <th class="text-light" style="background: #23272e;"  scope="col">Full Name</th>
+                <th class="text-light" style="background: #23272e;" scope="col">Email</th>
+                <th class="text-light" style="background: #23272e;" scope="col">Applied Date</th>
+                <th class="text-light" style="background: #23272e;" scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
                 @forelse ( $applicants as $applicant )
-                <tr>
-                    <th scope="row">{{ $loop->iteration}}</th>
-                    <td>
+                <tr style="background:red!important;">
+                    <th style="background:#ececec;" scope="row">{{ $loop->iteration}}</th>
+                    <td style="background:#ececec;">
                         {{ $applicant->FirstName." ".$applicant->MiddleName." ".$applicant->LastName }}
                     </td>
-                    <td>{{ $applicant->Email }}</td>
-                    <td>{{ date('F d, Y', strtotime($applicant->created_at)) }}</td>
-                    <td>
+                    <td style="background:#ececec;">{{ $applicant->Email }}</td>
+                    <td style="background:#ececec;">{{ date('F d, Y', strtotime($applicant->created_at)) }}</td>
+                    <td style="background:#ececec;">
                         <a  class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ route('details_applicant',$applicant->id) }}">View</a>
                     </td>
                 </tr>

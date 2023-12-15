@@ -1,18 +1,23 @@
 <div class="w-[1228px] mx-auto">
-    @if (session('success'))
-    <div class="alert alert-success" role="alert">
-        <p>Notification</p>
-        <p>{{ session('success') }}</p>
-      </div>
-    @endif
-    @if ($errors->any)
-
-    @endif
     <section>
         <div class="container">
             <div class="row mt-5 mb-5">
                 <div class="col-md-8 offset-md-2">
                     <form wire:submit="inquire_save">
+                        @if (session('success'))
+                        <div class="alert alert-success" role="alert">
+                            <h3>{{ session('success') }}</h3>
+                          </div>
+                        @endif
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                         @csrf
                         <div class="row">
                             <div class="col-12 mt-2">
@@ -29,7 +34,7 @@
                             </div>
                             <div class="col-6 mt-2">
                                 <label>Company No. / Company Registration / رقم الشركة</label>
-                                <input type="email" class="form-control" wire:model="companyRegistration">
+                                <input type="text" class="form-control" wire:model="companyRegistration">
                             </div>
                             <!-- File Input -->
                             <div class="container">

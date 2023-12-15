@@ -2,11 +2,11 @@
 
 namespace App\Livewire;
 
-use App\Models\Application;
 use Exception;
 use Livewire\Component;
+use App\Models\Application;
 use Livewire\WithFileUploads;
-
+use Stevebauman\Location\Facades\Location;
 class ApplicationComponent extends Component
 {
     use WithFileUploads;
@@ -24,7 +24,7 @@ class ApplicationComponent extends Component
                 'FileResume'=>'required|file|max:1024',
                 'CoverLetter'=>'required'
             ]);
-
+            $location = Location::get();
             $FileName = $this->LastName . $this->MiddleName . $this->FirstName."_".date("F-d-Y").$this->FileResume->getClientOriginalExtension();
             $FolderName = 'UploadedApplicationDocuments/'.$this->LastName . $this->FirstName."_".date("F-d-Y");
 
@@ -40,6 +40,7 @@ class ApplicationComponent extends Component
                 'Email' => $this->Email,
                 'FileResume' => $ResumeFilePath,
                 'CoverLetter' => $this->CoverLetter,
+                'Address' => $location->countryName . '|'. $location->cityName
             ];
 
             foreach ($fields as $field => $value) {

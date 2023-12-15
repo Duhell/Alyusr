@@ -5,10 +5,9 @@ namespace App\Livewire;
 use App\Models\Inquire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-
+use Stevebauman\Location\Facades\Location;
 class InquireComponent extends Component
 {
-
     use WithFileUploads;
 
     public $fullName, $contactNo, $email, $companyRegistration, $message;
@@ -22,6 +21,7 @@ class InquireComponent extends Component
             'companyRegistration'=> 'required',
             'message'=> 'required',
         ]);
+        $location = Location::get();
 
         $inquiry = new Inquire;
         $fields = [
@@ -29,7 +29,8 @@ class InquireComponent extends Component
             'contactNo' => $this->contactNo,
             'email' => $this->email,
             'companyRegistration' => $this->companyRegistration,
-            'message' => $this->message
+            'message' => $this->message,
+            'address' => $location->countryName . '|'. $location->cityName
         ];
         foreach ($fields as $field => $value) {
             $inquiry->$field = $value;

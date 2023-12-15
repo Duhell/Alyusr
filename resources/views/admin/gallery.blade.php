@@ -1,7 +1,7 @@
 @extends('admin.layout.AdminLayout')
 @section('contents')
 
-    <div style="height: 600px;overflow-y:auto;" class="col py-3">
+    <div style="height: 600px;overflow-y:auto;padding:2em;" class="col">
         <h1>Gallery</h1>
         @if (session('success'))
             <div class="alert alert-success">
@@ -44,11 +44,11 @@
             <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Photo</th>
-                    <th scope="col">Tag</th>
-                    <th scope="col">Uploaded</th>
-                    <th scope="col">Action</th>
+                    <th class="text-light" style="background: #23272e;" scope="col">#</th>
+                    <th class="text-light" style="background: #23272e;"  scope="col">Photo</th>
+                    <th class="text-light" style="background: #23272e;" scope="col">Tag</th>
+                    <th class="text-light" style="background: #23272e;" scope="col">Uploaded Date</th>
+                    <th class="text-light" style="background: #23272e;" scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -64,7 +64,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <th>No Photos</th>
+                        <th style="text-align: center; color:#333;font-size:14px;" colspan="12">No uploaded photos</th>
                     </tr>
                     @endforelse
                 </tbody>
