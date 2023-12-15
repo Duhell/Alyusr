@@ -534,7 +534,7 @@ a:focus {
 }
 
 .bg-1 {
-  background: url("./images/achievements/ach30.jpg") no-repeat;
+  background: url("./../../public/images/achievements/ach30.jpg") no-repeat;
   background-position: center 56%;
   background-size: cover;
   position: relative;
@@ -901,7 +901,7 @@ html {
 }
 
 .cta-page {
-  background: url("../assets/images/service/service-pic1.jpg") no-repeat;
+  background: url("../../public/images/service/service-pic1.jpg") no-repeat;
   /* background-position: 120%; */
   background-position: center 20%;
   height: 80vh;

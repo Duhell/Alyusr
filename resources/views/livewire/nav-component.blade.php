@@ -15,7 +15,7 @@
                                 <span>Call Now : </span>
                                 <span class="h4 text-white">+966533416292</span>
                             </a>
-                            <a href="https://portal.yaramay.com/" target="_blank"><button type="button" class="btn btn-primary m-3" style="padding: 5px 10px!important;">login</button></a>
+                            {{-- <a href="https://portal.yaramay.com/" target="_blank"><button type="button" class="btn btn-primary m-3" style="padding: 5px 10px!important;">login</button></a> --}}
                         </div>
                     </div>
                 </div>

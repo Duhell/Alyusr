@@ -31,7 +31,8 @@
                     <option value="achievements">Achievements</option>
                     <option value="events">Events</option>
                     <option value="staff">Staff</option>
-                    <option value="office">Activities</option>
+                    <option value="office">Office</option>
+                    <option value="activities">Activities</option>
                     <option value="others">Others</option>
                 </select>
             </div>
@@ -59,7 +60,7 @@
                         </td>
                         <td>{{ $image->tag }}</td>
                         <td>{{ date('F d, Y', strtotime($image->created_at)) }}</td>
-                        <td><a class="btn btn-danger" href="{{ "/dashboard/gallery/photo=".$image->id }}">Delete</a></td>
+                        <td><a class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ "/dashboard/gallery/photo=".$image->id }}">Delete</a></td>
                     </tr>
                     @empty
                     <tr>

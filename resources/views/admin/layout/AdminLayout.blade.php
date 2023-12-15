@@ -11,7 +11,7 @@
     <body>
         <main class="container-fluid">
             @auth
-            <div class="row  flex-nowrap">
+            <div style="width: 100%;" class="row  flex-nowrap">
                 <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
                     <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                         <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -19,24 +19,24 @@
                         </a>
                         <ul class="nav nav-pills  flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                             <li class="nav-item">
-                                <a wire:navigate href="/dashboard" class="nav-link text-light align-middle px-0">
+                                <a wire:navigate href="/dashboard" class="nav-link {{ request()->routeIs('dashboard') ? 'text-info' : 'text-light' }} align-middle px-0">
                                     <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a wire:navigate href="{{ route("gallery") }}" class="nav-link text-light align-middle px-0">
+                            <li class="nav-item ">
+                                <a wire:navigate href="{{ route("gallery") }}" class="nav-link {{ request()->routeIs('gallery') ? 'text-info' : 'text-light' }}  align-middle px-0">
                                     <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Gallery</span>
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a wire:navigate href="{{ route("application") }}" class="nav-link text-light align-middle px-0">
+                                <a wire:navigate href="{{ route("application") }}" class="nav-link {{ request()->routeIs('application') ? 'text-info' : 'text-light' }} align-middle px-0">
                                     <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Application</span>
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a wire:navigate href="{{ route("inquiry") }}" class="nav-link text-light align-middle px-0">
+                                <a wire:navigate href="{{ route("inquiry") }}" class="nav-link {{ request()->routeIs('inquiry') ? 'text-info' : 'text-light' }} align-middle px-0">
                                     <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Inquiry</span>
                                 </a>
                             </li>
@@ -51,6 +51,11 @@
                         <hr>
                     </div>
                 </div>
+                <div style="height:90vh; width:90%;" id="loading_screen" class="d-flex loading_screen align-items-center justify-content-center">
+                    <div class="spinner-border text-danger" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
                 @yield('contents')
             </div>
             @endauth
@@ -59,6 +64,15 @@
             @endguest
         </main>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const loadingScreen = document.getElementById('loading_screen');
+                if (loadingScreen) {
+                    loadingScreen.classList.remove('d-flex');
+                    loadingScreen.classList.add('d-none');
+                }
+            });
+        </script>
     </body>
 </html>
 

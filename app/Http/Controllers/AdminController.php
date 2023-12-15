@@ -27,7 +27,10 @@ class AdminController extends Controller
         ]);
     }
     public function dashboard(){
-        return view('admin.dashboard');
+        return view('admin.dashboard')->with([
+            'totalApplicants'=>Application::whereYear('created_at',date('Y'))->count(),
+            'totalInquiries'=>Inquire::whereYear('created_at',date('Y'))->count()
+        ]);
     }
 
     public function gallery(){
@@ -45,6 +48,21 @@ class AdminController extends Controller
             'data'=>Application::find($applicant_id)->first()
         ]);
     }
+
+    public function delete_applicant_details(Application $applicant_id){
+        $applicant_id->delete();
+        return redirect()->route('application')->with([
+            'success'=>"Delete Success"
+        ]);;
+    }
+
+    public function delete_inquiry_details(Inquire $inquire_id){
+        $inquire_id->delete();
+        return redirect()->route('inquiry')->with([
+            'success'=>"Delete Success"
+        ]);
+    }
+
     public function show_details_inquire(int $inquire_id){
         return view('admin.ShowView.InquireDetails')->with([
             'data'=>Inquire::find($inquire_id)->first()
