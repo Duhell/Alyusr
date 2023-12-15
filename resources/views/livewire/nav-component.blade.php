@@ -33,29 +33,29 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item my-2"><a wire:navigate href="/" class="nav-link" >Home</a></li>
+                        <li class="nav-item my-2"><a wire:navigate href="/" class="nav-link {{ request()->routeIs('landing') ? 'text-info' : '' }}" >Home</a></li>
 
                         <li class="nav-item dropdown my-2">
                             <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 About Us<i class="icofont-thin-down"></i>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a wire:navigate href="/about" class="dropdown-item">About Al Yusr</a></li>
-                                <li><a href="/legality" class="dropdown-item" >Legality</a></li>
+                                <li><a wire:navigate href="/about" class="dropdown-item {{ request()->routeIs('about_us') ? 'text-info' : '' }}">About Al Yusr</a></li>
+                                <li><a wire:navigate href="/legality" class="dropdown-item {{ request()->routeIs('our_legality') ? 'text-info' : '' }}" >Legality</a></li>
 
                             </ul>
                         </li>
 
-                        <li class="nav-item my-2"><a href="/jobs" class="nav-link" >Jobs</a></li>
-                        <li class="nav-item my-2"><a href="/services" class="nav-link" >Services</a></li>
+                        <li class="nav-item my-2"><a wire:navigate href="/jobs" class="nav-link " >Jobs</a></li>
+                        <li class="nav-item my-2"><a wire:navigate href="/services" class="nav-link {{ request()->routeIs('our_services') ? 'text-info' : '' }}" >Services</a></li>
 
 
                         <li class="nav-item dropdown my-2">
-                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle " role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Gallery<i class="icofont-thin-down"></i>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a wire:navigate href="/gallery/achievements" class="dropdown-item" >Achievements</a></li>
+                                <li><a wire:navigate href="/gallery/achievements" class="dropdown-item " >Achievements</a></li>
                                 <li><a wire:navigate href="/gallery/events" class="dropdown-item" >Events</a></li>
                                 <li><a wire:navigate href="/gallery/staff"class="dropdown-item" >Staff</a></li>
                                 <li><a wire:navigate href="/gallery/office" class="dropdown-item" >Office</a></li>
@@ -67,7 +67,7 @@
 
 
 
-                        <li class="nav-item my-2"><a href="/contact" class="nav-link">Contact</a></li>
+                        <li  class="nav-item my-2"><a wire:navigate href="/contact" class="nav-link {{ request()->routeIs('contact_us') ? 'text-info' : '' }}">Contact</a></li>
                         <li class="nav-item mx-2">
                             <a wire:navigate href="/application" class="btn btn-main-2 btn-icon btn-round-full my-2">
                                 Apply Now

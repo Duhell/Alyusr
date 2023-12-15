@@ -76,7 +76,7 @@
 
             <h1> 404 </h1>
             <p> This page is under maintenance or has been removed!</p>
-            <a wire:navigate href="/">Back to home</a>
+            <a href="/">Back to home</a>
         </div>
     </div>
 

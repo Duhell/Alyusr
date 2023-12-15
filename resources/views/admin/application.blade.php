@@ -5,9 +5,13 @@
     <div class="mt-4">
         <h1>Applicants</h1>
         @if (session('success'))
-        <div class="alert alert-info" role="alert">
-            {{ session('success') }}
-          </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-success contact__msg" role="alert">
+                    {{ session('success') }}
+                </div>
+            </div>
+        </div>
         @endif
         <br>
         <table class="table mt-4">

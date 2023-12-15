@@ -74,6 +74,14 @@ class AdminController extends Controller
         ]);
     }
 
+    public function jobs(){
+        return view('admin.job');
+    }
+
+    public function addjob(){
+        return view('admin.JobsView.AddJobView');
+    }
+
     public function upload(GalleryRequest $request){
         try{
 

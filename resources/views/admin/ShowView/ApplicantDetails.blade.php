@@ -25,7 +25,7 @@
                     </div>
                     <div class="col-md-6">
                         <label class="labels">Resume</label>
-                        <a style="padding-bottom: 14px; background:#e9ecef;" class="form-control" href="{{ asset($data->FileResume) }}" download >{{ $data->LastName }}'s Resume</a>
+                        <a style="padding-bottom: 14px; background:#e9ecef;" class="form-control" href="{{ asset('storage/'.$data->FileResume) }}" download >{{ $data->LastName }}'s Resume</a>
                     </div>
                 </div>
 

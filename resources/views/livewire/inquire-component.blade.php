@@ -5,9 +5,13 @@
                 <div class="col-md-8 offset-md-2">
                     <form wire:submit="inquire_save">
                         @if (session('success'))
-                        <div class="alert alert-success" role="alert">
-                            <h3>{{ session('success') }}</h3>
-                          </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-success contact__msg" role="alert">
+                                    {{ session('success') }}
+                                </div>
+                            </div>
+                        </div>
                         @endif
                         @if ($errors->any())
                         <div class="alert alert-danger">

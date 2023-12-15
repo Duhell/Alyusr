@@ -36,25 +36,25 @@
                             <label class="labels">Download Files</label>
                             @if ($data->inquireDocs)
                                 <div>
-                                    <a href="{{ asset($data->inquireDocs) }}" download>Inquire Document</a>
+                                    <a href="{{ asset('storage/'.$data->inquireDocs) }}" download>Inquire Document</a>
                                 </div>
                             @endif
 
                             @if ($data->national_id)
                                 <div>
-                                    <a href="{{ asset($data->national_id) }}" download>National Identification</a>
+                                    <a href="{{ asset('storage/'.$data->national_id) }}" download>National Identification</a>
                                 </div>
                             @endif
 
                             @if ($data->company_registration)
                                 <div>
-                                    <a href="{{ asset($data->company_registration) }}" download>Company Registration </a>
+                                    <a href="{{ asset('storage/'.$data->company_registration) }}" download>Company Registration </a>
                                 </div>
                             @endif
 
                             @if ($data->otherDocs)
                                 <div>
-                                    <a href="{{ asset($data->otherDocs) }}" download>Other Document </a>
+                                    <a href="{{ asset('storage/'.$data->otherDocs) }}" download>Other Document </a>
                                 </div>
                             @endif
                         </div>
