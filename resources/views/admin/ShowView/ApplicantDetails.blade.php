@@ -30,17 +30,17 @@
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Mobile Number</label><input disabled type="text" class="form-control" value="{{ $data->PhoneNumber }}"></div>
-                    <div class="col-md-12"><label class="labels">Email</label><input disabled type="text" class="form-control" value="{{ $data->Email }}"></div>
+                    <div class="col-md-6"><label class="labels">Mobile Number</label><input disabled type="text" class="form-control" value="{{ $data->PhoneNumber }}"></div>
+                    <div class="col-md-6"><label class="labels">Email</label><input disabled type="text" class="form-control" value="{{ $data->Email }}"></div>
                 </div>
-                <div class="mt-3 row">
-                    <label class="form-label">Cover Letter</label>
-                    <textarea class=" form-control" disabled rows="3">{{ $data->CoverLetter }}</textarea>
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <label class="form-label">Cover Letter</label>
+                        <textarea class=" form-control" disabled rows="3">{{ $data->CoverLetter }}</textarea>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
 </div>
 @endsection
