@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JobTitle;
 use Exception;
 use App\Models\Gallery;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\GalleryRequest;
+use App\Http\Requests\JobRequest;
 use App\Models\Application;
 use App\Models\Inquire;
+use App\Models\JobDescription;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
@@ -29,7 +32,8 @@ class AdminController extends Controller
     public function dashboard(){
         return view('admin.dashboard')->with([
             'totalApplicants'=>Application::whereYear('created_at',date('Y'))->count(),
-            'totalInquiries'=>Inquire::whereYear('created_at',date('Y'))->count()
+            'totalInquiries'=>Inquire::whereYear('created_at',date('Y'))->count(),
+            'totalJobs'=>JobTitle::whereYear('created_at',date('Y'))->count(),
         ]);
     }
 
@@ -68,6 +72,18 @@ class AdminController extends Controller
             'data'=>Inquire::find($inquire_id)->first()
         ]);
     }
+
+    public function show_details_job(JobTitle $job_id){
+        $job_id->load('jobDescriptions');
+
+        $jobDetails = [
+            'job_title' => $job_id,
+            'job_descriptions' => $job_id->jobDescriptions,
+        ];
+
+        return view('admin.ShowView.JobDetails',compact('jobDetails'));
+
+    }
     public function inquiry(){
         return view('admin.inquire')->with([
             'inquiries' => Inquire::all()
@@ -75,11 +91,35 @@ class AdminController extends Controller
     }
 
     public function jobs(){
-        return view('admin.job');
+        return view('admin.job')->with([
+            'Jobs'=>JobTitle::all()
+        ]);
     }
 
     public function addjob(){
         return view('admin.JobsView.AddJobView');
+    }
+
+    public function saveJob(JobRequest $request)
+    {
+        $validatedData = $request->validated();
+        $job = new JobTitle;
+        $job->postedBy = Auth::user()->name;
+        $job->job_position = $validatedData['job_position'];
+        $job->job_location = $validatedData['job_location'];
+        $job->save();
+
+        $jobDescriptions = [];
+        foreach ($validatedData['DescriptionTitle'] as $index => $descriptionTitle) {
+            $jobDescriptions[] = new JobDescription([
+                'job_requirement' => $descriptionTitle['name'],
+                'job_description' => $validatedData['DescriptionRequirements'][$index]['name'],
+            ]);
+        }
+
+        $job->jobDescriptions()->saveMany($jobDescriptions);
+
+        return redirect()->back()->with('success', 'Successfully added a job!');
     }
 
     public function upload(GalleryRequest $request){

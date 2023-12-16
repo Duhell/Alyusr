@@ -44,7 +44,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a wire:navigate href="{{ route("jobs") }}" class="nav-link {{ request()->routeIs('jobs') ? 'text-info' : 'text-light' }} align-middle px-0">
+                                <a wire:navigate href="{{ route("jobs") }}" class="nav-link {{ request()->routeIs('jobs') || request()->routeIs('create_job') ? 'text-info' : 'text-light' }} align-middle px-0">
                                     <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Jobs</span>
                                 </a>
                             </li>

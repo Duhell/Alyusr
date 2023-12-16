@@ -14,11 +14,12 @@
         </div>
         @endif
         <br>
-        <form action="{{ route('upload') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('save_job') }}" method="post">
             @csrf
             <div class="mb-3">
                 <label style="width:100%" class="form-label">Job Title</label>
-                <input class="form-control" placeholder="ex. Waitress" name="JobTitle" type="text">
+                <input class="form-control" required placeholder="ex. Waitress" name="job_position" type="text">
+                <input class="form-control" required placeholder="Location" name="job_location" type="text">
             </div>
 
             <div class="mb-3 descriptions">

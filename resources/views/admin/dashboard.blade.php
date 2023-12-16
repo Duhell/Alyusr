@@ -17,6 +17,13 @@
                 <p class="card-text" id="inquiries">Total Inquiries this year</p>
             </div>
         </div>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ $totalJobs }}</h5>
+                <p class="card-text" id="jobs">Total Jobs this year</p>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
