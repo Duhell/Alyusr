@@ -99,7 +99,9 @@ class AdminController extends Controller
         $newDescriptionIds[] = $description->id;
     }
 
-    // Delete the descriptions that were removed
+    // $oldDescriptionIds contains all the ids then
+    // Get the ids that are not in the $newDescriptionIds
+    // then remove the record in the db
     $removedDescriptions = $oldDescriptionIds->diff($newDescriptionIds);
     $job_id->JobDescriptions()->whereIn('id', $removedDescriptions)->delete();
 

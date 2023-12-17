@@ -38,43 +38,47 @@
             <div>
                 <button class="btn btn-primary" type="submit" >Save Job</button>
                 <button  class="btn btn-success" type="button"  onclick="addDescription()">Add Description</button>
-                <button  id="removeDescriptionBTN" class="btn d-none btn-danger" type="button" onclick="removeDescription()">Remove Description</button>
+                <button  id="removeDescriptionBTN" class="btn invisible btn-danger" type="button" onclick="removeDescription()">Remove Description</button>
             </div>
         </form>
     </div>
 </div>
 <script>
     let descriptionIndex = 0;
+    const container = document.getElementById('descriptionContainer');
+    const descriptionGroups = container.getElementsByClassName('descriptionGroup');
+    const descriptionBTN = document.getElementById('removeDescriptionBTN')
+
 
     function addDescription() {
         descriptionIndex++;
 
-        const container = document.getElementById('descriptionContainer');
         const newDescriptionGroup = document.querySelector('.descriptionGroup').cloneNode(true);
 
         newDescriptionGroup.querySelector('input').name = `DescriptionTitle[${descriptionIndex}][name]`;
         newDescriptionGroup.querySelector('textarea').name = `DescriptionRequirements[${descriptionIndex}][name]`;
 
         container.appendChild(newDescriptionGroup);
+        if(descriptionGroups.length > 1) {
+            descriptionBTN.classList.remove('invisible');
 
-        document.getElementById('removeDescriptionBTN').classList.remove('d-none');
+
+        }
+
     }
 
     function removeDescription() {
         const container = document.getElementById('descriptionContainer');
-        const descriptionGroups = container.getElementsByClassName('descriptionGroup');
 
         if (descriptionGroups.length > 1) {
             container.removeChild(descriptionGroups[descriptionGroups.length - 1]);
             descriptionIndex--;
 
-            if (descriptionGroups.length === 2) {
-                document.getElementById('removeDescriptionBTN').classList.add('d-none');
-            }
+        }
+        if(descriptionGroups.length <= 1) {
+            descriptionBTN.classList.add('invisible');
         }
     }
 </script>
-
-
 @endsection
 
