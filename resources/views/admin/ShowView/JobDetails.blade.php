@@ -8,7 +8,10 @@
                 <a wire:navigate href="{{ route('jobs') }}">Go Back</a>
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Job Details</h4>
-                    <a class="bg-danger px-3 py-2 rounded text-light" href="">Delete</a>
+                    <div>
+                        <a style="background: #79dfc1;" class="px-3 py-2 rounded text-dark" href="{{ route('edit_job',$jobDetails['job_title']->id) }}">Edit</a>
+                        <a class="bg-danger px-3 py-2 rounded text-light" href="{{ route('delete_job',$jobDetails['job_title']->id) }}">Delete</a>
+                    </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-md-12">
@@ -19,7 +22,12 @@
 
                 <div class="row mt-3">
                     <div class="col-md-6"><label class="labels">Job posted by</label><input disabled type="text" class="form-control" value="{{ $jobDetails['job_title']->postedBy }}"></div>
-                    <div class="col-md-6"><label class="labels">Posted on</label><input disabled type="text" class="form-control" value="{{ date('F d, Y',strtotime($jobDetails['job_title']->created_at)) }}" ></div>
+                    <div class="col-md-6">
+                        <label class="labels">
+                            {{ $jobDetails['job_title']->created_at != $jobDetails['job_title']->updated_at ? "Edited on":"Posted on"  }}
+                        </label>
+                        <input disabled type="text" class="form-control" value="{{ date('F d, Y',strtotime($jobDetails['job_title']->updated_at)) }}" >
+                    </div>
                 </div>
                 <br>
                 {{-- <div class="row mt-3">

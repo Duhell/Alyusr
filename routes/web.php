@@ -22,6 +22,9 @@ Route::get('/dashboard/jobs',[\App\Http\Controllers\AdminController::class,'jobs
 Route::get('/dashboard/jobs/add',[\App\Http\Controllers\AdminController::class,'addjob'])->name("create_job")->middleware('auth');
 Route::post('/dashboard/jobs/add',[\App\Http\Controllers\AdminController::class,'saveJob'])->name("save_job")->middleware('auth');
 Route::get('/dashboard/jobs/show={job_id}',[\App\Http\Controllers\AdminController::class,'show_details_job'])->name("details_job")->middleware('auth');
+Route::get('/dashboard/jobs/delete={job_id}',[\App\Http\Controllers\AdminController::class,'delete_job'])->name("delete_job")->middleware('auth');
+Route::get('/dashboard/jobs/edit={job_id}',[\App\Http\Controllers\AdminController::class,'edit_job'])->name("edit_job")->middleware('auth');
+Route::patch('/dashboard/jobs/update/{job_id}',[\App\Http\Controllers\AdminController::class,'update_job'])->name("update_job")->middleware('auth');
 Route::get('/dashboard/application',[\App\Http\Controllers\AdminController::class,'application'])->name("application")->middleware('auth');
 Route::get('/dashboard/application/applicant={applicant_id}',[\App\Http\Controllers\AdminController::class,'show_details_applicant'])->name("details_applicant")->middleware('auth');
 Route::get('/dashboard/application/delete/applicant={applicant_id}',[\App\Http\Controllers\AdminController::class,'delete_applicant_details'])->name("delete_applicant")->middleware('auth');

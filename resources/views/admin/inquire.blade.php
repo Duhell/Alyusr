@@ -4,7 +4,7 @@
     <div class="mt-4">
         <h1 class="display-4">Inquiries</h1>
         @if (session('success'))
-        <div class="row">
+        <div id="notif"  class="row">
             <div class="col-12">
                 <div class="alert alert-success contact__msg" role="alert">
                     {{ session('success') }}

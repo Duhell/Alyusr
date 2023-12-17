@@ -67,6 +67,48 @@ class AdminController extends Controller
         ]);
     }
 
+    public function delete_job(JobTitle $job_id){
+        $job_id->delete();
+        return redirect()->route('jobs')->with([
+           'success'=>'Successfully deleted.'
+        ]);
+    }
+
+    public function edit_job(JobTitle $job_id){
+        return view('admin.JobsView.EditJobDetails',compact('job_id'));
+    }
+
+    public function update_job(JobRequest $request, JobTitle $job_id)
+{
+    // Get the IDs of all descriptions before the update
+    $oldDescriptionIds = $job_id->JobDescriptions()->pluck('id');
+
+    // Update existing job details
+    $job_id->update($request->validated());
+
+    // Update or create job descriptions
+    $newDescriptionIds = [];
+    foreach ($request->input('DescriptionTitle') as $index => $descriptionData) {
+        $description = $job_id->JobDescriptions()->updateOrCreate(
+            ['id' => $request->input('DescriptionTitle')[$index]],
+            [
+                'job_requirement' => $descriptionData['name'],
+                'job_description' => $request->input('DescriptionRequirements')[$index]['name'],
+            ]
+        );
+        $newDescriptionIds[] = $description->id;
+    }
+
+    // Delete the descriptions that were removed
+    $removedDescriptions = $oldDescriptionIds->diff($newDescriptionIds);
+    $job_id->JobDescriptions()->whereIn('id', $removedDescriptions)->delete();
+
+    return redirect()->back()->with('success', 'Job updated successfully');
+}
+
+
+
+
     public function show_details_inquire(int $inquire_id){
         return view('admin.ShowView.InquireDetails')->with([
             'data'=>Inquire::find($inquire_id)->first()

@@ -4,7 +4,7 @@
     <div style="height: 600px;overflow-y:auto;padding:2em;" class="col">
         <h1>Gallery</h1>
         @if (session('success'))
-        <div class="row">
+        <div id="notif" class="row">
             <div class="col-12">
                 <div class="alert alert-success contact__msg" role="alert">
                     {{ session('success') }}

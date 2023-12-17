@@ -75,11 +75,25 @@
         <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const loadingScreen = document.getElementById('loading_screen');
+                const alertElement = document.getElementById('notif')
+
                 if (loadingScreen) {
                     loadingScreen.classList.remove('d-flex');
                     loadingScreen.classList.add('d-none');
                 }
+                removeNotif(alertElement)
+
             });
+
+            function removeNotif(e){
+                setTimeout(function(){
+                    if(e){
+                        e.classList.add('d-none')
+                    }
+                },4000)
+            }
+
+
         </script>
     </body>
 </html>

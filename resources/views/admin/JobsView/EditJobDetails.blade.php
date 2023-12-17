@@ -3,7 +3,7 @@
 <div style="height: 600px;overflow-y:auto;padding:2em;" class="col">
     <div class="mt-4">
         <a href="{{ route('jobs') }}">Go back</a>
-        <h1 class="display-4">Jobs</h1>
+        <h1 class="display-4">Update Job Details</h1>
         @if (session('success'))
         <div id="notif" class="row">
             <div class="col-12">
@@ -14,12 +14,13 @@
         </div>
         @endif
         <br>
-        <form action="{{ route('save_job') }}" method="post">
+        <form action="{{ route('update_job',$job_id->id) }}" method="POST">
             @csrf
+            @method('PATCH')
             <div class="mb-3">
                 <label style="width:100%" class="form-label">Job Title</label>
-                <input class="form-control" required placeholder="ex. Waitress" name="job_position" type="text">
-                <input class="form-control" required placeholder="Location" name="job_location" type="text">
+                <input class="form-control" value={{ $job_id->job_position }} required placeholder="ex. Waitress" name="job_position" type="text">
+                <input class="form-control" value="{{ $job_id->job_location }}" required placeholder="Location" name="job_location" type="text">
             </div>
 
             <div class="mb-3 descriptions">
@@ -27,16 +28,18 @@
 
                 {{-- add when clicked here --}}
                 <div id="descriptionContainer">
+                    @foreach ( $job_id->JobDescriptions as $index => $description)
                     <div class="descriptionGroup mt-4">
-                        <input class="form-control" name="DescriptionTitle[0][name]" placeholder="ex. Requirement and Skills" type="text">
-                        <textarea class="form-control" name="DescriptionRequirements[0][name]" placeholder="ex. List of requirements"   rows="5"></textarea>
+                        <input class="form-control" value="{{ $description->job_requirement }}" name="DescriptionTitle[{{ $index }}][name]" placeholder="ex. Requirement and Skills" type="text">
+                        <textarea class="form-control" name="DescriptionRequirements[{{ $index }}][name]" placeholder="ex. List of requirements"   rows="5">{{ $description->job_description }}</textarea>
                     </div>
+                    @endforeach
                 </div>
                 {{-- End --}}
             </div>
 
             <div>
-                <button class="btn btn-primary" type="submit" >Save Job</button>
+                <button class="btn btn-primary" type="submit" >Update Details</button>
                 <button  class="btn btn-success" type="button"  onclick="addDescription()">Add Description</button>
                 <button  id="removeDescriptionBTN" class="btn d-none btn-danger" type="button" onclick="removeDescription()">Remove Description</button>
             </div>
