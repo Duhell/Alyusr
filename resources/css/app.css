@@ -923,7 +923,7 @@ html {
   left: 0px !important;
   position: absolute !important;
   content: "" !important;
-  background: url("../assets/images/about/about.png") no-repeat 50% 50% !important;
+  background: url("/public/images/about/about.png") no-repeat 50% 50% !important;
 }
 .testimonial .slick-dots {
   text-align: left !important;

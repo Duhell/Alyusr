@@ -19,6 +19,5 @@ class Inquire extends Model
         'national_id',
         'company_registration',
         'otherDocs',
-        'address'
     ];
 }

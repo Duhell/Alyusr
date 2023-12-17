@@ -40,28 +40,27 @@
                                 About Us<i class="icofont-thin-down"></i>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a wire:navigate href="/about" class="dropdown-item {{ request()->routeIs('about_us') ? 'text-info' : '' }}">About Al Yusr</a></li>
-                                <li><a wire:navigate href="/legality" class="dropdown-item {{ request()->routeIs('our_legality') ? 'text-info' : '' }}" >Legality</a></li>
+                                <li><a wire:navigate href="/about" class="dropdown-item {{ request()->routeIs('about_us') ? 'text-info text-dark bg-info' : '' }}">About Al Yusr</a></li>
+                                <li><a wire:navigate href="/legality" class="dropdown-item {{ request()->routeIs('our_legality') ? 'text-info text-dark bg-info' : '' }}" >Legality</a></li>
 
                             </ul>
                         </li>
 
-                        <li class="nav-item my-2"><a wire:navigate href="/jobs" class="nav-link " >Jobs</a></li>
+                        <li class="nav-item my-2"><a wire:navigate href="/jobs" class="nav-link {{ request()->routeIs('listJobs') || request()->routeIs('details_job_list') ? 'text-info' : '' }}" >Jobs</a></li>
                         <li class="nav-item my-2"><a wire:navigate href="/services" class="nav-link {{ request()->routeIs('our_services') ? 'text-info' : '' }}" >Services</a></li>
 
 
                         <li class="nav-item dropdown my-2">
-                            <a class="nav-link dropdown-toggle " role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle {{ request()->routeIs('category_gallery') ? "text-info":'' }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Gallery<i class="icofont-thin-down"></i>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a wire:navigate href="/gallery/achievements" class="dropdown-item " >Achievements</a></li>
-                                <li><a wire:navigate href="/gallery/events" class="dropdown-item" >Events</a></li>
-                                <li><a wire:navigate href="/gallery/staff"class="dropdown-item" >Staff</a></li>
-                                <li><a wire:navigate href="/gallery/office" class="dropdown-item" >Office</a></li>
-                                <li><a wire:navigate href="/gallery/activities" class="dropdown-item" >Activities</a></li>
-                                <li><a wire:navigate href="/gallery/others" class="dropdown-item" >Others</a></li>
-
+                                @php
+                                    $routes = ['achievements','events','staff','office','activities','others']
+                                @endphp
+                                @foreach ( $routes as $route )
+                                    <li><a wire:navigate href="{{ route('category_gallery',$route) }}" class="dropdown-item {{ request()->is('gallery/'.$route) ? 'text-info text-dark bg-info' : '' }}" >{{ Str::ucfirst($route) }}</a></li>
+                                @endforeach
                             </ul>
                         </li>
 

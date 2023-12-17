@@ -25,7 +25,7 @@
             @csrf
             <div class="mb-3">
                 <label class="form-label">Upload Photo</label>
-                <input class="form-control" name="photo" type="file">
+                <input class="form-control" multiple name="photo[]" type="file">
             </div>
 
             <div class="mb-3">
@@ -63,7 +63,7 @@
                         </td>
                         <td>{{ $image->tag }}</td>
                         <td>{{ date('F d, Y', strtotime($image->created_at)) }}</td>
-                        <td><a class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ "/dashboard/gallery/photo=".$image->id }}">Delete</a></td>
+                        <td><a class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ "/dashboard/gallery/photo=".$image->id }}">Delete</a></td>
                     </tr>
                     @empty
                     <tr>

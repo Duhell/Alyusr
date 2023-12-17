@@ -5,7 +5,6 @@ namespace App\Livewire;
 use App\Models\Inquire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Stevebauman\Location\Facades\Location;
 class InquireComponent extends Component
 {
     use WithFileUploads;
@@ -21,7 +20,6 @@ class InquireComponent extends Component
             'companyRegistration'=> 'required',
             'message'=> 'required',
         ]);
-        $location = Location::get();
 
         $inquiry = new Inquire;
         $fields = [
@@ -30,7 +28,6 @@ class InquireComponent extends Component
             'email' => $this->email,
             'companyRegistration' => $this->companyRegistration,
             'message' => $this->message,
-            'address' => $location->countryName . '|'. $location->cityName
         ];
         foreach ($fields as $field => $value) {
             $inquiry->$field = $value;
@@ -45,16 +42,16 @@ class InquireComponent extends Component
            'files.*' => "file|max:1024"
         ]);
         // Create a new folder
-        $FolderName = $inquiry->fullName . '_' . date('F-d-Y');
+        $FolderName = str_replace(' ','',$inquiry->fullName)  . '_' . date('F-d-Y');
 
         foreach($this->files as $field => $file){
-            $FileName  = $inquiry->fullName . "_" . $file->getClientOriginalName() . "_" . date("F-d-Y");
+            $FileName  = str_replace(' ','',$inquiry->fullName) . "_" . date("F-d-Y") . '_'. $file->getClientOriginalName();
             $FilePath = $file->storeAs('UploadedInquiryDocuments/'.$FolderName,$FileName,'public');
             $inquiry->$field = $FilePath;
         }
         $inquiry->save();
         $this->reset();
-        session()->flash('success',"upload success");
+        session()->flash('success',"Form submitted!");
     }
 
     public function render()

@@ -22,8 +22,8 @@ class GalleryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'photo'=>"max:2048|image|mimes:jpeg,png,jpg",
-            'tag'=> 'required|string|max:255'
+            'photo.*'=>"max:2048|image|mimes:jpeg,png,jpg",
+            'tag'=> 'required|string|in:achievements,events,staff,office,activities,others',
         ];
     }
 

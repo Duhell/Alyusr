@@ -36,7 +36,7 @@
                             <label class="labels">Download Files</label>
                             @if ($data->inquireDocs)
                                 <div>
-                                    <a href="{{ asset('storage/'.$data->inquireDocs) }}" download>Inquire Document</a>
+                                    <a href="{{ asset('storage/'. str_replace(' ','', $data->inquireDocs)) }}" download>Inquire Document</a>
                                 </div>
                             @endif
 

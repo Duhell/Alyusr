@@ -11,7 +11,7 @@ Route::get('/jobs', \App\Livewire\JobsPage::class)->name('listJobs');
 Route::get('/jobs/details/job={job_id}', \App\Livewire\ShowDetails\JobDetails::class)->name('details_job_list');
 Route::get('/contact', \App\Livewire\ContactPage::class)->name('contact_us');
 Route::get('/application', \App\Livewire\ApplicationComponent::class)->name('sendApplication');
-Route::get('/gallery/{tag}', \App\Livewire\GalleryPage::class);
+Route::get('/gallery/{tag}', \App\Livewire\GalleryPage::class)->name('category_gallery');
 
 // Admin
 Route::get('/auth/login',[\App\Http\Controllers\AdminController::class,"loginView"])->name('login');
