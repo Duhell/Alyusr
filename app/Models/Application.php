@@ -13,10 +13,10 @@ class Application extends Model
       'FirstName',
       'MiddleName',
       'LastName',
+      'AppliedJob',
       'PhoneNumber',
       'Email',
       'FileResume',
       'CoverLetter',
-      'Address'
     ];
 }

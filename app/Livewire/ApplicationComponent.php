@@ -5,13 +5,13 @@ namespace App\Livewire;
 use Exception;
 use Livewire\Component;
 use App\Models\Application;
+use App\Models\JobTitle;
 use Livewire\WithFileUploads;
-use Stevebauman\Location\Facades\Location;
 class ApplicationComponent extends Component
 {
     use WithFileUploads;
 
-    public $FirstName,$MiddleName,$LastName,$PhoneNumber,$Email,$FileResume,$CoverLetter;
+    public $FirstName,$MiddleName,$LastName,$AppliedJob,$PhoneNumber,$Email,$FileResume,$CoverLetter;
 
     public function SaveApplication(){
         try{
@@ -19,12 +19,12 @@ class ApplicationComponent extends Component
                 'FirstName'=>'required|max:255',
                 'MiddleName'=>'required|max:255',
                 'LastName' =>'required|max:255',
+                'AppliedJob' =>'required',
                 'PhoneNumber' =>'required|max:255',
                 'Email'=> 'required|email',
                 'FileResume'=>'required|file|max:1024',
                 'CoverLetter'=>'required'
             ]);
-            $location = Location::get();
             $FileName = $this->LastName . $this->MiddleName . $this->FirstName."_".date("F-d-Y").$this->FileResume->getClientOriginalExtension();
             $FolderName = 'UploadedApplicationDocuments/'.$this->LastName . $this->FirstName."_".date("F-d-Y");
 
@@ -36,11 +36,11 @@ class ApplicationComponent extends Component
                 'FirstName' => $this->FirstName,
                 'MiddleName' => $this->MiddleName,
                 'LastName' => $this->LastName,
+                'AppliedJob' => $this->AppliedJob,
                 'PhoneNumber' => $this->PhoneNumber,
                 'Email' => $this->Email,
                 'FileResume' => $ResumeFilePath,
                 'CoverLetter' => $this->CoverLetter,
-                'Address' => $location->countryName . '|'. $location->cityName
             ];
 
             foreach ($fields as $field => $value) {
@@ -57,6 +57,8 @@ class ApplicationComponent extends Component
     }
     public function render()
     {
-        return view('livewire.application-component');
+        return view('livewire.application-component')->with([
+            'jobsAvail'=>JobTitle::all()
+        ]);
     }
 }

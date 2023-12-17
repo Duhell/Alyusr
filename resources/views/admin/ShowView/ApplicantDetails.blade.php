@@ -24,14 +24,24 @@
                         <input disabled type="text" class="form-control" value="{{ $data->LastName }}">
                     </div>
                     <div class="col-md-6">
-                        <label class="labels">Resume</label>
-                        <a style="padding-bottom: 14px; background:#e9ecef;" class="form-control" href="{{ asset('storage/'.$data->FileResume) }}" download >{{ $data->LastName }}'s Resume</a>
+                        <label class="labels">Applied For</label>
+                        <input disabled type="text" class="form-control" value="{{ $data->AppliedJob }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="labels">Mobile Number</label>
+                        <input disabled type="text" class="form-control" value="{{ $data->PhoneNumber }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="labels">Email</label>
+                        <input disabled type="text" class="form-control " value="{{ $data->Email }}">
                     </div>
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">Mobile Number</label><input disabled type="text" class="form-control" value="{{ $data->PhoneNumber }}"></div>
-                    <div class="col-md-6"><label class="labels">Email</label><input disabled type="text" class="form-control" value="{{ $data->Email }}"></div>
+                    <div class="col-md-6">
+                        <label class="labels">Download Resume</label>
+                        <a style="padding-bottom: 14px; background:#e9ecef;" class="form-control" href="{{ asset('storage/'.$data->FileResume) }}" download >{{ $data->LastName }}'s Resume</a>
+                    </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-12">

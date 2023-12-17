@@ -16,11 +16,11 @@ return new class extends Migration
             $table->string('FirstName')->nullable();
             $table->string('MiddleName')->nullable();
             $table->string('LastName')->nullable();
+            $table->string('AppliedJob')->nullable();
             $table->bigInteger('PhoneNumber')->nullable();
             $table->string('Email')->nullable();
             $table->string('FileResume')->nullable();
             $table->text('CoverLetter')->nullable();
-            $table->string('Address')->nullable();
             $table->timestamps();
         });
     }

@@ -29,10 +29,9 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Tag</label>
+                <label class="form-label">Category</label>
                 <select name="tag" class="form-select" aria-label="Default select">
-                    <option selected>Choose tag</option>
-                    <option value="achievements">Achievements</option>
+                    <option selected value="achievements">Achievements</option>
                     <option value="events">Events</option>
                     <option value="staff">Staff</option>
                     <option value="office">Office</option>

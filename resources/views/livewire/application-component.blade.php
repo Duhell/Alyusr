@@ -50,12 +50,17 @@
                                 <label>Last Name</label>
                                 <input wire:model="LastName" type="text" class="form-control" >
                             </div>
-                            {{-- <div class="col-12 mt-2">
+                            <div class="col-12 mt-2">
                                 <label>Job Title</label>
-                                <select class="form-control" v-model="job_id">
-                                    <option v-for="job in jobDetails" :key="job.uuid" :value="job.uuid">{{ job.title }}</option>
+                                <select class="form-control" wire:model.lazy="AppliedJob">
+                                    <option selected>List of Jobs</option>
+                                    @forelse ($jobsAvail as $job )
+                                        <option value="{{ $job->job_position }}">{{ $job->job_position }}</option>
+                                    @empty
+                                        <option>No job available</option>
+                                    @endforelse
                                 </select>
-                            </div> --}}
+                            </div>
                             <div class="col-6 mt-2">
                                 <label>Contact No.</label>
                                 <input wire:model="PhoneNumber" type="text" class="form-control" >

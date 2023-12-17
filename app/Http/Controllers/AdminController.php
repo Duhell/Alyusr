@@ -126,7 +126,10 @@ class AdminController extends Controller
         try{
 
             if (!$request->hasFile('photo')) {
-                throw new Exception('No file uploaded.');
+                throw new Exception('Please insert an image first.');
+            }
+            if(!$request->tag){
+                throw new Exception('Choose category.');
             }
 
             $photo = $request->file('photo');

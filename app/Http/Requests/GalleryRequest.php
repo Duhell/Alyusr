@@ -26,4 +26,11 @@ class GalleryRequest extends FormRequest
             'tag'=> 'required|string|max:255'
         ];
     }
+
+    public function messages()
+    {
+        return [
+          'photo.max'=>'Image size must below 2MB.'
+        ];
+    }
 }

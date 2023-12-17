@@ -19,7 +19,7 @@
               <tr>
                 <th class="text-light" style="background: #23272e;" scope="col">#</th>
                 <th class="text-light" style="background: #23272e;"  scope="col">Full Name</th>
-                <th class="text-light" style="background: #23272e;" scope="col">Email</th>
+                <th class="text-light" style="background: #23272e;" scope="col">Applied Job</th>
                 <th class="text-light" style="background: #23272e;" scope="col">Applied Date</th>
                 <th class="text-light" style="background: #23272e;" scope="col">Action</th>
               </tr>
@@ -31,7 +31,7 @@
                     <td style="background:#ececec;">
                         {{ $applicant->FirstName." ".$applicant->MiddleName." ".$applicant->LastName }}
                     </td>
-                    <td style="background:#ececec;">{{ $applicant->Email }}</td>
+                    <td style="background:#ececec;">{{ $applicant->AppliedJob }}</td>
                     <td style="background:#ececec;">{{ date('F d, Y', strtotime($applicant->created_at)) }}</td>
                     <td style="background:#ececec;">
                         <a  class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ route('details_applicant',$applicant->id) }}">View</a>

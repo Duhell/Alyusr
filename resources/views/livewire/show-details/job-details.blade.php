@@ -12,7 +12,7 @@
             <!-- <p>UUID: {{ $job->id }}</p> -->
             <p>Posted By: {{ $job->postedBy }}</p>
             <p>Posted On: {{ date('F d, Y',strtotime($job->created_at)) }}</p>
-            <a wire:navigate href="{{ route('application') }}">
+            <a wire:navigate href="{{ route('sendApplication') }}">
                 <button class="btn btn-primary">Apply Now</button>
             </a>
           </div>
@@ -22,7 +22,7 @@
             @forelse ( $job->jobDescriptions as $description )
             <div class="mt-3">
                 <strong>{{ $description->job_requirement }}</strong>
-                <p style="font-size: 14px;">{{ $description->job_description }}</p>
+                <p>{!! nl2br(e($description->job_description)) !!}</p>
             </div>
             @empty
                 <strong>No job description</strong>
