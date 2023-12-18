@@ -25,40 +25,40 @@
                         @csrf
                         <div class="row">
                             <div class="col-12 mt-2">
-                                <label>Fullname/الاسم الكامل</label>
+                                <label class="language-label">Fullname/الاسم الكامل</label>
                                 <input type="text" class="form-control" wire:model="fullName">
                             </div>
                             <div class="col-6 mt-2">
-                                <label>Contact No. / رقم الاتصال</label>
+                                <label class="language-label">Contact No. / رقم الاتصال</label>
                                 <input type="text" class="form-control" wire:model="contactNo">
                             </div>
                             <div class="col-6 mt-2">
-                                <label>Email / البريد الإلكتروني</label>
+                                <label class="language-label">Email / البريد الإلكتروني</label>
                                 <input type="email" class="form-control" wire:model="email">
                             </div>
                             <div class="col-6 mt-2">
-                                <label>Company No. / Company Registration / رقم الشركة</label>
+                                <label class="language-label">Company No. / Company Registration / رقم الشركة</label>
                                 <input type="text" class="form-control" wire:model="companyRegistration">
                             </div>
                             <!-- File Input -->
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-6 mt-2">
-                                        <label>Inquiry Documents/وثائق الاستفسار</label>
+                                        <label class="language-label">Inquiry Documents/وثائق الاستفسار</label>
                                         <input type="file" class="form-control" wire:model="files.inquireDocs" id="inquiry_document">
                                     </div>
                                     <div class="col-md-6 mt-2">
-                                        <label>National I.d/ الهويه الوطنيه</label>
+                                        <label class="language-label">National I.d/ الهويه الوطنيه</label>
                                         <input type="file" class="form-control" wire:model="files.national_id" id="national_id">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 mt-2">
-                                        <label>Company  Registration/تسجيل الشريكة</label>
+                                        <label class="language-label">Company  Registration/تسجيل الشريكة</label>
                                         <input type="file" class="form-control" wire:model="files.company_registration" id="company_registration">
                                     </div>
                                     <div class="col-md-6 mt-2">
-                                        <label>Other documents/وثائق أخرى</label>
+                                        <label class="language-label">Other documents/وثائق أخرى</label>
                                         <input type="file" class="form-control" wire:model="files.otherDocs" id="other_document">
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
 
                             <!-- End of File Input -->
                             <div class="col-12 mt-2">
-                                <label>Message/رسالة</label>
+                                <label class="language-label">Message/رسالة</label>
                                 <textarea class="form-control" rows="10" wire:model="message"></textarea>
                             </div>
                             <div class="col-12 mt-3">

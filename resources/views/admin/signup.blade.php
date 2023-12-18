@@ -7,7 +7,7 @@
           <div class="card-body p-4 p-sm-5">
             <div>
                 <img class="img-fluid" src="{{ asset('images/alyusr-logo.png') }}" alt="Alyusr Logo">
-                <h6 class="card-title fs-4 text-center">Sign in</h6>
+                <h6 class="card-title fs-4 text-center">Sign up</h6>
             </div>
             @if ($errors->any())
             <div class="alert alert-danger">

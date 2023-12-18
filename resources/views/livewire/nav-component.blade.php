@@ -79,6 +79,15 @@
                                 Inquire Now
                             </a>
                         </li>
+                        <li class="nav-item dropdown my-2">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="icofont-world"></i><i class="icofont-thin-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" language="en" class="dropdown-item language">English</a></li>
+                                <li><a href="#" language="ar" class="dropdown-item language">Arabic</a></li>
+                            </ul>
+                        </li>
                     </ul>
 
                 </div>
