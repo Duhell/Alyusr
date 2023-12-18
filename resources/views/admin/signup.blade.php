@@ -18,30 +18,30 @@
                 </ul>
             </div>
             @endif
-            <form action="{{ route('signin') }}" method="post">
+            <form action="{{ route('register') }}" method="post">
                 @csrf
+                <div class="form-floating mb-3">
+                    <input name="fullname" type="text" class="form-control" placeholder="">
+                    <label>Full Name</label>
+                </div>
               <div class="form-floating mb-3">
                 <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">Email address</label>
               </div>
               <div class="form-floating mb-3">
-                <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Password</label>
-              </div>
-
-              <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck">
-                <label class="form-check-label" for="rememberPasswordCheck">
-                  Remember password
-                </label>
-              </div>
+                  <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                  <label for="floatingPassword">Password</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input name="confirm_password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                  <label for="floatingPassword">Confirm Password</label>
+                </div>
               <div class="d-grid">
-                <button class="btn btn-info btn-login text-uppercase fw-bold" type="submit">Login
-                  </button>
+                <button class="btn btn-info btn-login text-uppercase fw-bold" type="submit">Register</button>
               </div>
               <hr class="my-4">
             </form>
-            <a href="{{ route('signup') }}">Create Account</a>
+            <a href="{{ route('login') }}">Login here</a>
           </div>
         </div>
       </div>

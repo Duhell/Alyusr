@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
              'email' => 'omar@alyusr.website',
              'password' => Hash::make('Alyusr_2023'),
              'email_verified_at' => now(),
-             'role' => 'admin',
+             'role' => 1,
              'remember_token' => Str::random(10)
         ]);
 
@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
              'email' => 'admin@alyusr.website',
              'password' => Hash::make('Alyusr@2023'),
              'email_verified_at' => now(),
-             'role' => 'admin',
+             'role' => 1,
              'remember_token' => Str::random(10)
         ]);
     }

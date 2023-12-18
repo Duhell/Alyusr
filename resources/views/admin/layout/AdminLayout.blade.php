@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/alyusr-logo.png') }}"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <title>Al Yusr | Admin</title>
+        <title>Al Yusr</title>
         <link rel="stylesheet" href="{{ asset('icofont/icofont.min.css') }}">
         @vite(['resources/css/app.css','resources/js/app.js'])
     </head>

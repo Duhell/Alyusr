@@ -12,6 +12,8 @@ use App\Http\Requests\JobRequest;
 use App\Models\Application;
 use App\Models\Inquire;
 use App\Models\JobDescription;
+use App\Models\User;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
@@ -20,13 +22,51 @@ class AdminController extends Controller
     {
         return view('admin.login');
     }
+    public function signupView()
+    {
+        return view('admin.signup');
+    }
+
+    public function registerAccount()
+    {
+        try {
+            $validated = request()->validate([
+                'fullname' => 'required',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required|min:8',
+                'confirm_password' => 'required|same:password'
+            ]);
+            $new_user = new \App\Models\User;
+            $new_user->name = $validated['fullname'];
+            $new_user->email = $validated['email'];
+            $new_user->password = $validated['password'];
+            $new_user->save();
+            return redirect()->route('login')->with(['success'=>'You are now registered!']);
+        } catch (Exception $err) {
+            Log::error($err->getMessage(),[
+                'line'=>$err->getLine(),
+                'file'=>$err->getFile()
+            ]);
+        }
+    }
 
     public function login(LoginRequest $req)
     {
         $credentials = $req->validated();
-
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard');
+            $user = Auth::user();
+
+            switch($user->role){
+                case(0):
+                    $page = "landing";
+                    break;
+                case(1):
+                    $page = "dashboard";
+                    break;
+                default:
+                    Log::error('error on login function from AdminController, line 63');
+            }
+            return redirect()->route($page);
         }
 
         return back()->withErrors([
@@ -36,9 +76,10 @@ class AdminController extends Controller
     public function dashboard()
     {
         return view('admin.dashboard')->with([
-            'totalApplicants' => Application::whereYear('created_at', date('Y'))->count(),
-            'totalInquiries' => Inquire::whereYear('created_at', date('Y'))->count(),
-            'totalJobs' => JobTitle::whereYear('created_at', date('Y'))->count(),
+            'totalApplicants' => Application::count(),
+            'totalInquiries' => Inquire::count(),
+            'totalJobs' => JobTitle::count(),
+            'totalUsers' => User::where('role',0)->count(),
         ]);
     }
 
@@ -204,9 +245,10 @@ class AdminController extends Controller
             }
 
             return redirect()->back()->with('success', 'Upload Success');
-        } catch (Exception $e) {
-            return redirect()->back()->withErrors([
-                'upload_error' => $e->getMessage()
+        } catch (Exception $err) {
+            Log::error($err->getMessage(),[
+                'line'=>$err->getLine(),
+                'file'=>$err->getFile()
             ]);
         }
     }
@@ -226,7 +268,10 @@ class AdminController extends Controller
                 return redirect()->back()->with(['error' => "Image not found!"]);
             }
         } catch (Exception $err) {
-            return redirect()->back()->withErrors(['error' => $err->getMessage()]);
+            Log::error($err->getMessage(),[
+                'line'=>$err->getLine(),
+                'file'=>$err->getFile()
+            ]);
         }
     }
 

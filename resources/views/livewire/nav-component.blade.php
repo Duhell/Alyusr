@@ -10,13 +10,23 @@
                         </ul>
                     </div>
                     <div class="col-lg-6 ">
-                        <div class="text-lg-right top-right-bar  mt-2 mt-lg-0 ">
+                        <div class="text-lg-right top-right-bar d-flex justify-content-around align-items-center  mt-2 mt-lg-0 ">
                             <a href="tel:+966533416292">
                                 <span>Call Now : </span>
                                 <span class="h4 text-white">+966533416292</span>
                             </a>
                             {{-- <a href="https://portal.yaramay.com/" target="_blank"><button type="button" class="btn btn-primary m-3" style="padding: 5px 10px!important;">login</button></a> --}}
+                            <div style="width:50px;height:50px" class="btn-group">
+                                <button type="button" class="btn btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="text-light">Welcome {{ Auth::user()->name }}</span>
+                                    <span class="visually-hidden">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                  <a href="{{ route('logout') }}" class="px-3">Logout</a>
+                                </ul>
+                              </div>
                         </div>
+
                     </div>
                 </div>
             </div>
