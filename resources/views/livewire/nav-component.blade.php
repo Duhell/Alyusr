@@ -70,20 +70,20 @@
 
                         <li  class="nav-item my-2"><a wire:navigate href="/contact" class="nav-link {{ request()->routeIs('contact_us') ? 'text-info' : '' }}">Contact</a></li>
                         <li class="nav-item mx-2">
-                            <a wire:navigate href="/application" class="btn btn-main-2 btn-icon btn-round-full my-2">
+                            <a  href="/application" class="btn btn-main-2 btn-icon btn-round-full my-2">
                                 Apply Now
                             </a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a wire:navigate href="{{ route('sendInquiry') }}" class="btn btn-main-2 btn-icon btn-round-full my-2">
+                            <a href="{{ route('sendInquiry') }}" class="btn btn-main-2 btn-icon btn-round-full my-2">
                                 Inquire Now
                             </a>
                         </li>
-                        <li class="nav-item dropdown my-2">
+                        <li wire:ignore class="nav-item dropdown my-2">
                             <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="icofont-world"></i><i class="icofont-thin-down"></i>
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul   class="dropdown-menu">
                                 <li><a href="#" language="en" class="dropdown-item language">English</a></li>
                                 <li><a href="#" language="ar" class="dropdown-item language">Arabic</a></li>
                             </ul>

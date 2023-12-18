@@ -39,19 +39,19 @@
                         @csrf
                         <div class="row">
                             <div class="col-4 mt-2">
-                                <label>First Name</label>
+                                <label class="language-label">First Name / الاسم الأول</label>
                                 <input wire:model="FirstName" type="text" class="form-control">
                             </div>
                             <div class="col-4 mt-2">
-                                <label>Middle Name</label>
+                                <label class="language-label">Middle Name / الاسم الأوسط</label>
                                 <input wire:model="MiddleName" type="text" class="form-control" >
                             </div>
                             <div class="col-4 mt-2">
-                                <label>Last Name</label>
+                                <label class="language-label">Last Name / الاسم الأخير</label>
                                 <input wire:model="LastName" type="text" class="form-control" >
                             </div>
                             <div class="col-12 mt-2">
-                                <label>Job Title</label>
+                                <label class="language-label">Job Title / المسمى الوظيفي</label>
                                 <select class="form-control" wire:model.lazy="AppliedJob">
                                     <option selected>List of Jobs</option>
                                     @forelse ($jobsAvail as $job )
@@ -62,20 +62,20 @@
                                 </select>
                             </div>
                             <div class="col-6 mt-2">
-                                <label>Contact No.</label>
+                                <label class="language-label">Contact No. / رقم الهاتف</label>
                                 <input wire:model="PhoneNumber" type="text" class="form-control" >
                             </div>
                             <div class="col-6 mt-2">
-                                <label>Email</label>
+                                <label class="language-label">Email / البريد الإلكتروني</label>
                                 <input wire:model="Email" type="email" class="form-control" >
                             </div>
                             <div class="col-12 mt-2">
-                                <label>Upload Resume</label>
+                                <label class="language-label">Upload Resume / تحميل السيرة الذاتية</label>
                                 <input type="file" class="form-control" wire:model="FileResume" id="resume">
                                 <div wire:loading wire:target="FileResume">Uploading...</div>
                             </div>
                             <div class="col-12 mt-2">
-                                <label>Cover Letter</label>
+                                <label class="language-label">Cover Letter / رسالة التغطية</label>
                                 <textarea class="form-control" rows="10" wire:model="CoverLetter" ></textarea>
                             </div>
                             <div class="col-12 mt-3">
