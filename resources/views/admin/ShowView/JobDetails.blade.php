@@ -9,8 +9,8 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Job Details</h4>
                     <div>
-                        <a style="background: #79dfc1;" class="px-3 py-2 rounded text-dark" href="{{ route('edit_job',$jobDetails['job_title']->id) }}">Edit</a>
-                        <a class="bg-danger px-3 py-2 rounded text-light" href="{{ route('delete_job',$jobDetails['job_title']->id) }}">Delete</a>
+                        <a style="background: #222222;" class="px-3 link-info py-2 rounded text-light" href="{{ route('edit_job',$jobDetails['job_title']->id) }}">Edit</a>
+                        <a  style="background: #222222;" class=" px-3 link-danger py-2 rounded text-light" href="{{ route('delete_job',$jobDetails['job_title']->id) }}">Delete</a>
                     </div>
                 </div>
 

@@ -8,7 +8,7 @@
                 <a wire:navigate href="/dashboard/application">Go Back</a>
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Applicant Details</h4>
-                    <a class="bg-danger px-3 py-2 rounded text-light" href="{{ route('delete_applicant',$data->id) }}">Delete</a>
+                    <a class="bg-dark link-danger px-3 py-2 rounded text-light" href="{{ route('delete_applicant',$data->id) }}">Delete</a>
                 </div>
                 <div class="row mt-2">
                     <div class="col-md-6">
