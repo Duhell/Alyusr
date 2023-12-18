@@ -16,10 +16,11 @@
             <div style="width: 100%;" class="row  flex-nowrap">
                 <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
                     <div class="d-flex w-100 flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                        <a href="/dashboard" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <a href="/dashboard" class="d-flex w-100 align-items-center border-bottom border-warning pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                             <span class="fs-5 d-none d-sm-inline">Menu</span>
                         </a>
-                        <ul class="nav nav-pills  w-100 flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+
+                        <ul class="nav nav-pills mt-4 w-100 flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                             <li class="nav-item w-100">
                                 <a wire:navigate href="/dashboard" class="nav-link {{ request()->routeIs('dashboard') ? 'text-dark px-2 bg-warning' : 'text-light' }} align-middle px-0">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">

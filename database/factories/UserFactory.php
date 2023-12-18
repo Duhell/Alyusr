@@ -27,7 +27,8 @@ class UserFactory extends Factory
             'name' => "Al Yusr",
             'email' => "admin@alyusr.website",
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'role' => 'admin',
+            'password' => static::$password ??= Hash::make('Alyusr@2023'),
             'remember_token' => Str::random(10),
         ];
     }
