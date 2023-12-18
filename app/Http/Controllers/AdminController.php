@@ -36,7 +36,7 @@ class AdminController extends Controller
                 'password' => 'required|min:8',
                 'confirm_password' => 'required|same:password'
             ]);
-            $new_user = new \App\Models\User;
+            $new_user = new User;
             $new_user->name = $validated['fullname'];
             $new_user->email = $validated['email'];
             $new_user->password = $validated['password'];
