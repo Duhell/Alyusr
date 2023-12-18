@@ -9,6 +9,15 @@
                 <img class="img-fluid" src="{{ asset('images/alyusr-logo.png') }}" alt="Alyusr Logo">
                 <h6 class="card-title fs-4 text-center">Sign in</h6>
             </div>
+            @if (session('success'))
+            <div id="notif" class="row">
+                <div class="col-12">
+                    <div class="alert alert-success contact__msg" role="alert">
+                        {{ session('success') }}
+                    </div>
+                </div>
+            </div>
+            @endif
             @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>

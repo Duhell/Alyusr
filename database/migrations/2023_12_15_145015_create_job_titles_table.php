@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('job_titles', function (Blueprint $table) {
             $table->id();
             $table->string('postedBy');
+            $table->string('job_image')->nullable();
             $table->string('job_position')->nullable();
             $table->string('job_location')->nullable();
             $table->timestamps();

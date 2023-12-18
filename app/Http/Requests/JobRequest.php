@@ -22,6 +22,7 @@ class JobRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'job_image'=>'sometimes|image|max:1024|nullable|mimes:png,jpg,jpeg',
             'job_position' => 'max:255',
             'job_location'=> 'max:255',
             'DescriptionTitle.*.name' => "max:255",

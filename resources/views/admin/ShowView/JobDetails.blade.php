@@ -13,29 +13,43 @@
                         <a class="bg-danger px-3 py-2 rounded text-light" href="{{ route('delete_job',$jobDetails['job_title']->id) }}">Delete</a>
                     </div>
                 </div>
-                <div class="row mt-2">
-                    <div class="col-md-12">
-                        <label class="labels">Position</label>
-                        <input disabled type="text" class="form-control" value="{{ $jobDetails['job_title']->job_position }}">
-                    </div>
-                </div>
 
-                <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">Job posted by</label><input disabled type="text" class="form-control" value="{{ $jobDetails['job_title']->postedBy }}"></div>
-                    <div class="col-md-6">
-                        <label class="labels">
-                            {{ $jobDetails['job_title']->created_at != $jobDetails['job_title']->updated_at ? "Edited on":"Posted on"  }}
-                        </label>
-                        <input disabled type="text" class="form-control" value="{{ date('F d, Y',strtotime($jobDetails['job_title']->updated_at)) }}" >
+                <div class="row">
+                    <!-- Left side (Image) -->
+                    @if ($jobDetails['job_title']->job_image)
+                    <div style="padding:0px;" class="col-md-3">
+                        <img style="object-fit: cover;" src="{{ Storage::url($jobDetails['job_title']->job_image) }}" class="img-fluid border w-100 h-100 rounded" alt="...">
+                    </div>
+                    @else
+                    <div style="padding:0px;" class="col-md-3">
+                        <img style="object-fit: cover;" src="https://www.thensg.gov.za/wp-content/uploads/2020/07/No_Image-3-scaled-1.jpg" class="img-fluid border w-100 h-100 rounded" alt="...">
+                    </div>
+                    @endif
+
+                    <!-- Right side (Position, Posted By, and Posted On) -->
+                    <div class="col-md-9">
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+                                <label class="labels">Position</label>
+                                <input disabled type="text" class="form-control" value="{{ $jobDetails['job_title']->job_position }}">
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <label class="labels">Job posted by</label>
+                                <input disabled type="text" class="form-control" value="{{ $jobDetails['job_title']->postedBy }}">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="labels">
+                                    {{ $jobDetails['job_title']->created_at != $jobDetails['job_title']->updated_at ? "Edited on":"Posted on"  }}
+                                </label>
+                                <input disabled type="text" class="form-control" value="{{ date('F d, Y',strtotime($jobDetails['job_title']->updated_at)) }}" >
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <br>
-                {{-- <div class="row mt-3">
-                    <div class="col-md-12">
-                        <label class="form-label">Cover Letter</label>
-                        <textarea class=" form-control" disabled rows="3"></textarea>
-                    </div>
-                </div> --}}
                 <h3>Job Description</h3>
                 @foreach ($jobDetails['job_descriptions'] as $description)
                     <div class="mt-3">

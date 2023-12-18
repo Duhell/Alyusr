@@ -8,6 +8,13 @@
         <div class="row">
           <div class="col-md-6">
             <h1>Job Details</h1>
+            @if ($job->job_image)
+            <div class="w-50 h-50 mb-3">
+                <img class="img-fluid" src="{{ Storage::url($job->job_image) }}" alt="Job Image">
+            </div>
+            @else
+                {{-- No image --}}
+            @endif
             <h3>Position: {{ $job->job_position }}</h3>
             <!-- <p>UUID: {{ $job->id }}</p> -->
             <p>Posted By: {{ $job->postedBy }}</p>

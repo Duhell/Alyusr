@@ -13,9 +13,22 @@
             </div>
         </div>
         @endif
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
         <br>
-        <form action="{{ route('save_job') }}" method="post">
+        <form action="{{ route('save_job') }}" method="post" enctype="multipart/form-data">
             @csrf
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupFile01">Add Image</label>
+                <input type="file" accept="image/*" name="job_image" class="form-control" id="inputGroupFile01">
+            </div>
             <div class="mb-3">
                 <label style="width:100%" class="form-label">Job Title</label>
                 <input class="form-control" required placeholder="ex. Waitress" name="job_position" type="text">
@@ -35,10 +48,10 @@
                 {{-- End --}}
             </div>
 
-            <div>
-                <button class="btn btn-primary" type="submit" >Save Job</button>
-                <button  class="btn btn-success" type="button"  onclick="addDescription()">Add Description</button>
-                <button  id="removeDescriptionBTN" class="btn invisible btn-danger" type="button" onclick="removeDescription()">Remove Description</button>
+            <div class="d-flex gap-2 flex-column flex-md-row justify-content-md-start align-items-md-center">
+                <button style="background-color: #146c43;border:0;" class="py-2 px-4 rounded text-light d-flex align-items-center gap-2 " type="submit" >Save Changes</button>
+                <button  style="background-color: #23272e;border:0;" class="py-2 px-4 rounded text-light d-flex align-items-center gap-2 " type="button"  onclick="addDescription()">Add Description</button>
+                <button  id="removeDescriptionBTN" style="background-color: #842029;border:0;" class="py-2 invisible px-4 rounded text-light d-flex align-items-center gap-2 " type="button" onclick="removeDescription()">Remove Description</button>
             </div>
         </form>
     </div>

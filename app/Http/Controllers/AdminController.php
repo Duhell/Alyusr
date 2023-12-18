@@ -15,6 +15,7 @@ use App\Models\JobDescription;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 
 class AdminController extends Controller
 {
@@ -41,11 +42,13 @@ class AdminController extends Controller
             $new_user->email = $validated['email'];
             $new_user->password = $validated['password'];
             $new_user->save();
-            return redirect()->route('login')->with(['success'=>'You are now registered!']);
-        } catch (Exception $err) {
-            Log::error($err->getMessage(),[
-                'line'=>$err->getLine(),
-                'file'=>$err->getFile()
+            return redirect()->route('login')->with(['success' => 'You are now registered!']);
+        }catch(ValidationException $err){
+            return redirect()->route('signup')->withErrors($err->errors())->withInput();
+        }catch (Exception $err) {
+            Log::error($err->getMessage(), [
+                'line' => $err->getLine(),
+                'file' => $err->getFile()
             ]);
         }
     }
@@ -56,11 +59,11 @@ class AdminController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
 
-            switch($user->role){
-                case(0):
+            switch ($user->role) {
+                case (0):
                     $page = "landing";
                     break;
-                case(1):
+                case (1):
                     $page = "dashboard";
                     break;
                 default:
@@ -79,7 +82,7 @@ class AdminController extends Controller
             'totalApplicants' => Application::count(),
             'totalInquiries' => Inquire::count(),
             'totalJobs' => JobTitle::count(),
-            'totalUsers' => User::where('role',0)->count(),
+            'totalUsers' => User::where('role', 0)->count(),
         ]);
     }
 
@@ -203,24 +206,39 @@ class AdminController extends Controller
 
     public function saveJob(JobRequest $request)
     {
-        $validatedData = $request->validated();
-        $job = new JobTitle;
-        $job->postedBy = Auth::user()->name;
-        $job->job_position = $validatedData['job_position'];
-        $job->job_location = $validatedData['job_location'];
-        $job->save();
+        try {
+            $validatedData = $request->validated();
 
-        $jobDescriptions = [];
-        foreach ($validatedData['DescriptionTitle'] as $index => $descriptionTitle) {
-            $jobDescriptions[] = new JobDescription([
-                'job_requirement' => $descriptionTitle['name'],
-                'job_description' => $validatedData['DescriptionRequirements'][$index]['name'],
+            $job = new JobTitle;
+            $job->postedBy = Auth::user()->name;
+
+            if(request()->hasFile('job_image') && $validatedData['job_image'] !== null){
+                $image_name = 'photo' . '_' . $validatedData['job_position'] . "_" . date('F-d-Y').'.' . $validatedData['job_image']->getClientOriginalExtension();
+                $image_path = $validatedData['job_image']->storeAs('public/JobPost/' . $image_name);
+                $job->job_image = $image_path;
+            }
+
+            $job->job_position = $validatedData['job_position'];
+            $job->job_location = $validatedData['job_location'];
+            $job->save();
+
+            $jobDescriptions = [];
+            foreach ($validatedData['DescriptionTitle'] as $index => $descriptionTitle) {
+                $jobDescriptions[] = new JobDescription([
+                    'job_requirement' => $descriptionTitle['name'],
+                    'job_description' => $validatedData['DescriptionRequirements'][$index]['name'],
+                ]);
+            }
+
+            $job->jobDescriptions()->saveMany($jobDescriptions);
+
+            return redirect()->back()->with('success', 'Successfully added a job!');
+        } catch (Exception $err) {
+            Log::error($err->getMessage(), [
+                'line' => $err->getLine(),
+                'file' => $err->getFile()
             ]);
         }
-
-        $job->jobDescriptions()->saveMany($jobDescriptions);
-
-        return redirect()->back()->with('success', 'Successfully added a job!');
     }
 
     public function upload(GalleryRequest $request)
@@ -246,9 +264,9 @@ class AdminController extends Controller
 
             return redirect()->back()->with('success', 'Upload Success');
         } catch (Exception $err) {
-            Log::error($err->getMessage(),[
-                'line'=>$err->getLine(),
-                'file'=>$err->getFile()
+            Log::error($err->getMessage(), [
+                'line' => $err->getLine(),
+                'file' => $err->getFile()
             ]);
         }
     }
@@ -268,9 +286,9 @@ class AdminController extends Controller
                 return redirect()->back()->with(['error' => "Image not found!"]);
             }
         } catch (Exception $err) {
-            Log::error($err->getMessage(),[
-                'line'=>$err->getLine(),
-                'file'=>$err->getFile()
+            Log::error($err->getMessage(), [
+                'line' => $err->getLine(),
+                'file' => $err->getFile()
             ]);
         }
     }

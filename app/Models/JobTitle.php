@@ -10,7 +10,7 @@ class JobTitle extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['job_position'];
+    protected $fillable = ['job_image','job_position','job_location'];
 
     public function jobDescriptions() : HasMany
     {
