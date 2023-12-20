@@ -22,7 +22,7 @@ class GalleryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'photo.*'=>"max:2048|image|mimes:jpeg,png,jpg",
+            'photo.*'=>"required|max:2048|image|mimes:jpeg,png,jpg",
             'tag'=> 'required|string|in:achievements,events,staff,office,activities,others',
         ];
     }
@@ -30,7 +30,7 @@ class GalleryRequest extends FormRequest
     public function messages()
     {
         return [
-          'photo.max'=>'Image size must below 2MB.'
+            'photo.max'=>'Image size must below 2MB.'
         ];
     }
 }

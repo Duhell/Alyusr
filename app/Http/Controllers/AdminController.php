@@ -244,11 +244,9 @@ class AdminController extends Controller
     public function upload(GalleryRequest $request)
     {
         try {
-
             if (!$request->hasFile('photo')) {
                 throw new Exception('Please insert an image first.');
             }
-
             $photos = $request->file('photo');
             $tag = $request->tag;
 
@@ -267,6 +265,9 @@ class AdminController extends Controller
             Log::error($err->getMessage(), [
                 'line' => $err->getLine(),
                 'file' => $err->getFile()
+            ]);
+            return redirect()->back()->withErrors([
+                'msg'=>$err->getMessage(),
             ]);
         }
     }
