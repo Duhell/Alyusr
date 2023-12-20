@@ -249,6 +249,7 @@ class AdminController extends Controller
             }
             $photos = $request->file('photo');
             $tag = $request->tag;
+            $uploadedBy = Auth::user()->name;
 
             foreach ($photos as $photo) {
                 $filename = time() . "_" . uniqid() . '.' . $photo->getClientOriginalExtension();
@@ -256,7 +257,8 @@ class AdminController extends Controller
 
                 Gallery::create([
                     'imagePath' => 'gallery/' . $tag . '/' . $filename,
-                    'tag' => $tag
+                    'tag' => $tag,
+                    'uploadedBy'=> $uploadedBy
                 ]);
             }
 

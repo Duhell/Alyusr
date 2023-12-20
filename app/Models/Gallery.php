@@ -9,5 +9,5 @@ class Gallery extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['imagePath','tag'];
+    protected $fillable = ['imagePath','tag','uploadedBy'];
 }

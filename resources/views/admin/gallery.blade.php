@@ -52,6 +52,7 @@
                     <th class="text-light" style="background: #23272e;" scope="col">#</th>
                     <th class="text-light" style="background: #23272e;"  scope="col">Photo</th>
                     <th class="text-light" style="background: #23272e;" scope="col">Category</th>
+                    <th class="text-light" style="background: #23272e;" scope="col">Uploaded by</th>
                     <th class="text-light" style="background: #23272e;" scope="col">Uploaded Date</th>
                     <th class="text-light" style="background: #23272e;" scope="col">Action</th>
                   </tr>
@@ -64,6 +65,7 @@
                             <img src="{{ Storage::url($image->imagePath) }}" alt="" style="width: 100px; height: 100px;">
                         </td>
                         <td>{{ $image->tag }}</td>
+                        <td>{{ $image->uploadedBy }}</td>
                         <td>{{ date('F d, Y', strtotime($image->created_at)) }}</td>
                         <td><a class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ "/dashboard/gallery/photo=".$image->id }}">Delete</a></td>
                     </tr>
