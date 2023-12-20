@@ -25,7 +25,7 @@
             @csrf
             <div class="mb-3">
                 <label class="form-label">Upload Photo</label>
-                <input class="form-control" multiple name="photo[]" type="file">
+                <input class="form-control" accept="image/*" multiple name="photo[]" type="file">
             </div>
 
             <div class="mb-3">
