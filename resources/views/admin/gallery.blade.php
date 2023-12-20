@@ -51,7 +51,7 @@
                   <tr>
                     <th class="text-light" style="background: #23272e;" scope="col">#</th>
                     <th class="text-light" style="background: #23272e;"  scope="col">Photo</th>
-                    <th class="text-light" style="background: #23272e;" scope="col">Tag</th>
+                    <th class="text-light" style="background: #23272e;" scope="col">Category</th>
                     <th class="text-light" style="background: #23272e;" scope="col">Uploaded Date</th>
                     <th class="text-light" style="background: #23272e;" scope="col">Action</th>
                   </tr>
