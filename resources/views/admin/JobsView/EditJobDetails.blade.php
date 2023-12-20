@@ -19,7 +19,7 @@
             @method('PATCH')
             <div class="mb-3">
                 <label style="width:100%" class="form-label">Job Title</label>
-                <input class="form-control" value={{ $job_id->job_position }} required placeholder="ex. Waitress" name="job_position" type="text">
+                <input class="form-control" value="{!! $job_id->job_position !!}" required placeholder="ex. Waitress" name="job_position" type="text">
                 <input class="form-control" value="{{ $job_id->job_location }}" required placeholder="Location" name="job_location" type="text">
             </div>
 

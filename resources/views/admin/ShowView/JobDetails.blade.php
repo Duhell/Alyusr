@@ -54,7 +54,7 @@
                 @foreach ($jobDetails['job_descriptions'] as $description)
                     <div class="mt-3">
                         <strong>{{ $description->job_requirement }}</strong>
-                        <p style="font-size: 14px;">{{ $description->job_description }}</p>
+                        <p style="font-size: 14px;">{!! nl2br(e($description->job_description)) !!}</p>
                     </div>
                 @endforeach
             </div>
