@@ -1,9 +1,9 @@
 @extends('admin.layout.AdminLayout')
 @section('contents')
-<div style="height: 600px;overflow-y:auto;padding:2em;" class="col">
+<div style="height: 650px;overflow-y:auto;padding:2em;" class="col">
     <div class="mt-4">
         <a href="{{ route('jobs') }}">Go back</a>
-        <h1 class="display-4">Jobs</h1>
+        <h1 class="display-4">Create Job</h1>
         @if (session('success'))
         <div id="notif" class="row">
             <div class="col-12">
