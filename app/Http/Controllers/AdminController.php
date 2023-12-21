@@ -13,6 +13,7 @@ use App\Models\Application;
 use App\Models\Inquire;
 use App\Models\JobDescription;
 use App\Models\User;
+use App\Models\Visit;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
@@ -83,6 +84,7 @@ class AdminController extends Controller
             'totalInquiries' => Inquire::count(),
             'totalJobs' => JobTitle::count(),
             'totalUsers' => User::where('role', 0)->count(),
+            'totalVisitors'=> Visit::count()
         ]);
     }
 

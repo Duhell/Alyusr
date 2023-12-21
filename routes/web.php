@@ -14,7 +14,7 @@ Route::get('/application', \App\Livewire\ApplicationComponent::class)->name('sen
 Route::get('/gallery/{tag}', \App\Livewire\GalleryPage::class)->name('category_gallery')->middleware('auth');
 
 // Admin
-Route::get('/auth/login',[\App\Http\Controllers\AdminController::class,"loginView"])->name('login');
+Route::get('/auth/login',[\App\Http\Controllers\AdminController::class,"loginView"])->name('login')->middleware('visitor');
 Route::get('/auth/signup',[\App\Http\Controllers\AdminController::class,"signupView"])->name('signup');
 Route::post('/auth/register',[\App\Http\Controllers\AdminController::class,"registerAccount"])->name('register');
 Route::post('/auth/signin',[\App\Http\Controllers\AdminController::class,"login"])->name('signin');

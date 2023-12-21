@@ -31,6 +31,13 @@
                 <p class="card-text" id="jobs">Total Users</p>
             </div>
         </div>
+
+        <div class="card shadow" style="width: 15rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ $totalVisitors }}</h5>
+                <p class="card-text" id="jobs">Number of Visitors</p>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
