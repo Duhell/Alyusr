@@ -50,6 +50,7 @@
                 @endforelse
             </tbody>
         </table>
+        {{ $Jobs->links('pagination::bootstrap-5') }}
     </div>
 </div>
 @endsection

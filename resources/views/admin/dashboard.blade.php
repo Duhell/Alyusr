@@ -32,12 +32,35 @@
             </div>
         </div>
 
-        <div class="card shadow" style="width: 15rem;">
-            <div class="card-body">
-                <h5 class="card-title">{{ $totalVisitors }}</h5>
-                <p class="card-text" id="jobs">Number of Visitors</p>
-            </div>
+        <div class="mt-4 w-100">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th class="text-light" style="background: #23272e;" scope="col">#</th>
+                    <th class="text-light" style="background: #23272e;"  scope="col">IP Address</th>
+                    <th class="text-light" style="background: #23272e;" scope="col">Country</th>
+                    <th class="text-light" style="background: #23272e;" scope="col">Visited Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @forelse ( $Visitors as $visitor )
+                    <tr>
+                        <th scope="row">{{ $loop->iteration}}</th>
+                        <td>{{ $visitor->ip_address }}</td>
+                        <td>{{ $visitor->country }}</td>
+                        <td>{{ date('F d, Y', strtotime($visitor->created_at)) }}</td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <th style="text-align: center; color:#333;font-size:14px;" colspan="12">No Visitors</th>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
+
+            {{ $Visitors->links('pagination::bootstrap-5') }}
         </div>
+
     </div>
 </div>
 @endsection

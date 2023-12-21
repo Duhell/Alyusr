@@ -76,6 +76,7 @@
                     @endforelse
                 </tbody>
             </table>
+            {{ $images->links('pagination::bootstrap-5') }}
         </div>
     </div>
 @endsection

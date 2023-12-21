@@ -84,19 +84,19 @@ class AdminController extends Controller
             'totalInquiries' => Inquire::count(),
             'totalJobs' => JobTitle::count(),
             'totalUsers' => User::where('role', 0)->count(),
-            'totalVisitors'=> Visit::count()
+            'Visitors'=> Visit::paginate(5)
         ]);
     }
 
     public function gallery()
     {
-        return view('admin.gallery')->with(['images' => Gallery::all()]);
+        return view('admin.gallery')->with(['images' => Gallery::paginate(5)]);
     }
 
     public function application()
     {
         return view('admin.application')->with([
-            'applicants' => Application::all()
+            'applicants' => Application::paginate(10)
         ]);
     }
 
@@ -190,14 +190,14 @@ class AdminController extends Controller
     public function inquiry()
     {
         return view('admin.inquire')->with([
-            'inquiries' => Inquire::all()
+            'inquiries' => Inquire::paginate(10)
         ]);
     }
 
     public function jobs()
     {
         return view('admin.job')->with([
-            'Jobs' => JobTitle::all()
+            'Jobs' => JobTitle::paginate(10)
         ]);
     }
 

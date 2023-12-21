@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use App\Models\Visit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -22,11 +23,16 @@ class LogVisit
         $key = 'visit_' . md5($ipAddress . $userAgent);
 
         if(!Cache::has($key)){
+
+            $response = Http::get("https://ipinfo.io/{$ipAddress}/json");
+            $country = $response->json('country');
+
             Visit::create([
-                'ip_address'=>$request->ip(),
-                'user_agent'=>$request->header('User-Agent')
+                'ip_address'=>$ipAddress,
+                'user_agent'=>$userAgent,
+                'country'=> $country
             ]);
-            Cache::put($key, true, now()->addMinutes(10));
+            //Cache::put($key, true, now()->addMinutes(10));
         }
         return $next($request);
     }

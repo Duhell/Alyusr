@@ -47,6 +47,7 @@
                 </tr>
                 @endforelse
             </tbody>
+            {{ $applicants->links('pagination::bootstrap-5') }}
         </table>
     </div>
 </div>

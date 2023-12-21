@@ -8,6 +8,7 @@ class Visit extends Model
 {
     protected $fillable = [
         'ip_address',
-        'user_agent'
+        'user_agent',
+        'country'
         ];
 }

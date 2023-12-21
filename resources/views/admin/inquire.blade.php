@@ -47,6 +47,7 @@
                 @endforelse
             </tbody>
         </table>
+        {{ $inquiries->links('pagination::bootstrap-5') }}
     </div>
 </div>
 @endsection
