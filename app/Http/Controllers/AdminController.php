@@ -138,6 +138,7 @@ class AdminController extends Controller
 
     public function update_job(JobRequest $request, JobTitle $job_id)
     {
+
         // Get the IDs of all descriptions before the update
         $oldDescriptionIds = $job_id->JobDescriptions()->pluck('id');
 
@@ -162,6 +163,20 @@ class AdminController extends Controller
         // then remove the record in the db
         $removedDescriptions = $oldDescriptionIds->diff($newDescriptionIds);
         $job_id->JobDescriptions()->whereIn('id', $removedDescriptions)->delete();
+
+        if($request->hasFile('upload_new_image')){
+            $oldImagePath = $job_id->job_image;
+
+            if ($oldImagePath) {
+            // Delete the previous image file
+                if (Storage::exists('public/' . $oldImagePath)) {
+                        Storage::delete('public/' . $oldImagePath);
+                }
+            }
+            $image_name = 'photo' . '_' . $request->job_position . "_" . date('F-d-Y').'.' . $request->upload_new_image->getClientOriginalExtension();
+            $newImagePath = $request->upload_new_image->storeAs('public/JobPost/' . $image_name);
+            $job_id->update(['job_image' => $newImagePath]);
+        }
 
         return redirect()->back()->with('success', 'Job updated successfully');
     }
@@ -283,7 +298,10 @@ class AdminController extends Controller
             $image = Gallery::find($id);
 
             if ($image) {
-                Storage::delete($image->imagePath);
+                if (Storage::exists('public/' . $image->imagePath)) {
+                    Storage::delete('public/' . $image->imagePath);
+                }
+
                 $image->delete();
 
                 return redirect()->back()->with(['success' => "Image deleted successfully"]);

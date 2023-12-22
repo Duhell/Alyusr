@@ -16,7 +16,11 @@
                                 <span class="h4 text-white">+966533416292</span>
                             </a>
                             {{-- <a href="https://portal.yaramay.com/" target="_blank"><button type="button" class="btn btn-primary m-3" style="padding: 5px 10px!important;">login</button></a> --}}
-                            <a href="{{ route('logout') }}" class="text-light">Logout</a>
+                            @if(Auth::user()->role == 0)
+                                <a href="{{ route('logout') }}" class="text-light">Logout</a>
+                            @elseif (Auth::user()->role == 1)
+                                <a href="{{ route('dashboard') }}" class="text-light">Go back to dashboard</a>
+                            @endif
                         </div>
 
                     </div>

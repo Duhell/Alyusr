@@ -1,7 +1,10 @@
 @extends('admin.layout.AdminLayout')
 @section('contents')
 <div style="height: 600px;overflow-y:auto; padding:2em;" class="col">
-    <h2>Dashboard</h2>
+    <div class="d-flex align-self-md-center justify-content-between">
+        <h2>Dashboard</h2>
+        <a href="{{ route('landing') }}">Go to website</a>
+    </div>
     <h6>Welcome {{ Auth::user()->name }}</h6>
     <div class="container mt-5 d-flex flex-wrap gap-3 align-items-center">
         <div class="card shadow" style="width: 15rem;">

@@ -18,13 +18,13 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <div class="about-img">
-                    <img src="{{ asset('images/achievements/ach12.jpg') }}" alt="" class="img-fluid" />
+                    <img src="{{ asset('images/events/events15.jpg') }}" alt="" class="img-fluid" />
                     <img src="{{ asset('images/achievements/ach10.jpg') }}" alt="" class="img-fluid mt-4" />
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <div class="about-img mt-4 mt-lg-0">
-                    <img style="object-fit: cover; height: 450px;" src="{{ asset('images/achievements/ach30.jpg') }}" alt="" class="img-fluid" />
+                        <img style="object-fit: cover; height: 450px;" src="{{ asset('images/events/events18.jpg') }}" alt="" class="img-fluid" />
                     </div>
                 </div>
 

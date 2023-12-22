@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', \App\Livewire\LandingComponent::class)->name('landing')->middleware('auth');
@@ -38,3 +39,11 @@ Route::get('/dashboard/gallery/photo={id}',[\App\Http\Controllers\AdminControlle
 
 Route::get('/auth/logout',[\App\Http\Controllers\AdminController::class,"logout"])->name('logout');
 
+Route::get('/linkstorage', function () {
+    \Illuminate\Support\Facades\Artisan::call('storage:link');
+    echo 'Storage linked!';
+});
+
+Route::get('/removelink', function () {
+    File::delete(public_path('storage'));
+});

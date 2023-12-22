@@ -14,9 +14,13 @@
         </div>
         @endif
         <br>
-        <form action="{{ route('update_job',$job_id->id) }}" method="POST">
+        <form action="{{ route('update_job',$job_id->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupFile01">Upload new image</label>
+                <input type="file" accept="image/*" name="upload_new_image" class="form-control" id="inputGroupFile01">
+            </div>
             <div class="mb-3">
                 <label style="width:100%" class="form-label">Job Title</label>
                 <input class="form-control" value="{!! $job_id->job_position !!}" required placeholder="ex. Waitress" name="job_position" type="text">

@@ -32,7 +32,7 @@ class LogVisit
                 'user_agent'=>$userAgent,
                 'country'=> $country
             ]);
-            //Cache::put($key, true, now()->addMinutes(10));
+            Cache::put($key, true, now()->addMinutes(10));
         }
         return $next($request);
     }

@@ -23,6 +23,7 @@ class JobRequest extends FormRequest
     {
         return [
             'job_image'=>'sometimes|image|max:1024|nullable|mimes:png,jpg,jpeg',
+            'upload_new_image' => 'sometimes|image|max:1024|nullable|mimes:png,jpg,jpeg',
             'job_position' => 'max:255',
             'job_location'=> 'max:255',
             'DescriptionTitle.*.name' => "max:255",
