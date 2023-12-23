@@ -233,6 +233,11 @@ class AdminController extends Controller
             if(request()->hasFile('job_image') && $validatedData['job_image'] !== null){
                 $image_name = 'photo' . '_' . $validatedData['job_position'] . "_" . date('F-d-Y').'.' . $validatedData['job_image']->getClientOriginalExtension();
                 $image_path = $validatedData['job_image']->storeAs('public/JobPost/' . $image_name);
+
+                // Set permission
+                $image_full_path = storage_path('app/public/JobPost/'. $image_name);
+                chmod($image_full_path,0755);
+
                 $job->job_image = $image_path;
             }
 
