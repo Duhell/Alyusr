@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\JobTitle;
 use Exception;
-use App\Models\Gallery;
-use App\Http\Requests\LoginRequest;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\GalleryRequest;
-use App\Http\Requests\JobRequest;
-use App\Models\Application;
-use App\Models\Inquire;
-use App\Models\JobDescription;
 use App\Models\User;
 use App\Models\Visit;
+use App\Models\Gallery;
+use App\Models\Inquire;
+use App\Models\JobTitle;
+use App\Models\Application;
+use App\Models\JobDescription;
+use App\Http\Requests\JobRequest;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use App\Http\Requests\GalleryRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 
@@ -267,10 +268,17 @@ class AdminController extends Controller
             $photos = $request->file('photo');
             $tag = $request->tag;
             $uploadedBy = Auth::user()->name;
+            $baseDirectory = public_path('storage/gallery/'.$tag);
+
+            // If not exist, create and set permisision
+            File::makeDirectory($baseDirectory,0755,true,true);
 
             foreach ($photos as $photo) {
+
                 $filename = time() . "_" . uniqid() . '.' . $photo->getClientOriginalExtension();
                 $photo->storeAs('public/gallery/' . $tag, $filename);
+                $imagePath = $baseDirectory. '/' .$filename;
+                chmod($imagePath,0755);
 
                 Gallery::create([
                     'imagePath' => 'gallery/' . $tag . '/' . $filename,
