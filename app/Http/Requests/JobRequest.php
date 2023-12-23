@@ -26,8 +26,8 @@ class JobRequest extends FormRequest
             'upload_new_image' => 'sometimes|image|max:1024|nullable|mimes:png,jpg,jpeg',
             'job_position' => 'max:255',
             'job_location'=> 'max:255',
-            'DescriptionTitle.*.name' => "max:255",
-            'DescriptionRequirements.*.name'=>'max:255'
+            'DescriptionTitle.*.name' => "",
+            'DescriptionRequirements.*.name'=>''
         ];
     }
 }
