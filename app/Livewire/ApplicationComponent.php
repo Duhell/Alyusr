@@ -31,7 +31,10 @@ class ApplicationComponent extends Component
 
             File::makeDirectory(storage_path('app/public/'. $FolderName),0755,true,true);
             $ResumeFilePath = $this->FileResume->storeAs($FolderName, $FileName, 'public');
-            chmod($ResumeFilePath,0755);
+
+            $ResumeFullPath = storage_path('app/public/'. $FolderName . "/" . $FileName);
+            chmod($ResumeFullPath,0755);
+
             $application = new Application;
 
             $fields = [

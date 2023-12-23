@@ -52,8 +52,8 @@
                             </div>
                             <div class="col-12 mt-2">
                                 <label data-original="Job Title / المسمى الوظيفي" class="language-label">Job Title</label>
-                                <select class="form-control" wire:model.lazy="AppliedJob">
-                                    <option selected>List of Jobs</option>
+                                <select class="form-control" required wire:model="AppliedJob">
+                                    <option>List of Jobs</option>
                                     @forelse ($jobsAvail as $job )
                                         <option value="{{ $job->job_position }}">{{ $job->job_position }}</option>
                                     @empty
