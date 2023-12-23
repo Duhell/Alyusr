@@ -6,6 +6,7 @@ use Exception;
 use Livewire\Component;
 use App\Models\Application;
 use App\Models\JobTitle;
+use Illuminate\Support\Facades\File;
 use Livewire\WithFileUploads;
 class ApplicationComponent extends Component
 {
@@ -28,8 +29,9 @@ class ApplicationComponent extends Component
             $FileName = $this->LastName . $this->MiddleName . $this->FirstName."_".date("F-d-Y").$this->FileResume->getClientOriginalExtension();
             $FolderName = 'UploadedApplicationDocuments/'.$this->LastName . $this->FirstName."_".date("F-d-Y");
 
+            File::makeDirectory(storage_path('app/public/'. $FolderName),0755,true,true);
             $ResumeFilePath = $this->FileResume->storeAs($FolderName, $FileName, 'public');
-
+            chmod($ResumeFilePath,0755);
             $application = new Application;
 
             $fields = [
