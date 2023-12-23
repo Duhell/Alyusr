@@ -49,7 +49,7 @@
             </div>
 
             <div class="d-flex gap-2 flex-column flex-md-row justify-content-md-start align-items-md-center">
-                <button style="background-color: #146c43;border:0;" class="py-2 px-4 rounded text-light d-flex align-items-center gap-2 " type="submit" >Save Changes</button>
+                <button style="background-color: #146c43;border:0;" class="py-2 px-4 rounded text-light d-flex align-items-center gap-2 " type="submit" >Save</button>
                 <button  style="background-color: #23272e;border:0;" class="py-2 px-4 rounded text-light d-flex align-items-center gap-2 " type="button"  onclick="addDescription()">Add Description</button>
                 <button  id="removeDescriptionBTN" style="background-color: #842029;border:0;" class="py-2 invisible px-4 rounded text-light d-flex align-items-center gap-2 " type="button" onclick="removeDescription()">Remove Description</button>
             </div>
