@@ -2,7 +2,7 @@
 @section('contents')
 
     <div style="height: 600px;overflow-y:auto;padding:2em;" class="col">
-        <h1>Gallery</h1>
+        <h1>Galleries</h1>
         @if (session('success'))
         <div id="notif" class="row">
             <div class="col-12">
