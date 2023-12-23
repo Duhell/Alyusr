@@ -5,6 +5,8 @@ namespace App\Livewire;
 use App\Models\Inquire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\File;
+
 class InquireComponent extends Component
 {
     use WithFileUploads;
@@ -44,9 +46,15 @@ class InquireComponent extends Component
         // Create a new folder
         $FolderName = str_replace(' ','',$inquiry->fullName)  . '_' . date('F-d-Y');
 
+        File::makeDirectory(storage_path('app/public/UploadedInquiryDocuments/'. $FolderName),0755,true,true);
+
         foreach($this->files as $field => $file){
             $FileName  = str_replace(' ','',$inquiry->fullName) . "_" . date("F-d-Y") . '_'. $file->getClientOriginalName();
             $FilePath = $file->storeAs('UploadedInquiryDocuments/'.$FolderName,$FileName,'public');
+
+            //Set permission
+            $FileFullPath = storage_path('app/public/UploadedInquiryDocuments/' . $FolderName . '/' . $FileName);
+            chmod($FileFullPath,0755);
             $inquiry->$field = $FilePath;
         }
         $inquiry->save();
