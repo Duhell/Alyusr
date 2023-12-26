@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', \App\Livewire\LandingComponent::class)->name('landing');
+Route::get('/', \App\Livewire\LandingComponent::class)->name('landing')->middleware('visitor');
 Route::get('/inquire', \App\Livewire\InquireComponent::class)->name('sendInquiry')->middleware('auth');
 Route::get('/about', \App\Livewire\AboutPage::class)->name('about_us');
 Route::get('/legality', \App\Livewire\LegalityPage::class)->name('our_legality');
@@ -15,7 +15,7 @@ Route::get('/application', \App\Livewire\ApplicationComponent::class)->name('sen
 Route::get('/gallery/{tag}', \App\Livewire\GalleryPage::class)->name('category_gallery');
 
 // Admin
-Route::get('/auth/login',[\App\Http\Controllers\AdminController::class,"loginView"])->name('login')->middleware('visitor');
+Route::get('/auth/login',[\App\Http\Controllers\AdminController::class,"loginView"])->name('login');
 Route::get('/auth/signup',[\App\Http\Controllers\AdminController::class,"signupView"])->name('signup');
 Route::post('/auth/register',[\App\Http\Controllers\AdminController::class,"registerAccount"])->name('register');
 Route::post('/auth/signin',[\App\Http\Controllers\AdminController::class,"login"])->name('signin');
