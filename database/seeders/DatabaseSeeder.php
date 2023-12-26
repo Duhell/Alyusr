@@ -32,5 +32,14 @@ class DatabaseSeeder extends Seeder
              'role' => 1,
              'remember_token' => Str::random(10)
         ]);
+
+        User::factory()->create([
+             'name' => 'Yaramay',
+             'email' => 'yaramay@alyusr.website',
+             'password' => Hash::make('Yaramay_2023'),
+             'email_verified_at' => now(),
+             'role' => 1,
+             'remember_token' => Str::random(10)
+        ]);
     }
 }

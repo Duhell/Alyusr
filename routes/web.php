@@ -3,16 +3,16 @@
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', \App\Livewire\LandingComponent::class)->name('landing')->middleware('auth');
+Route::get('/', \App\Livewire\LandingComponent::class)->name('landing');
 Route::get('/inquire', \App\Livewire\InquireComponent::class)->name('sendInquiry')->middleware('auth');
-Route::get('/about', \App\Livewire\AboutPage::class)->name('about_us')->middleware('auth');
-Route::get('/legality', \App\Livewire\LegalityPage::class)->name('our_legality')->middleware('auth');
-Route::get('/services', \App\Livewire\ServicesPage::class)->name('our_services')->middleware('auth');
-Route::get('/jobs', \App\Livewire\JobsPage::class)->name('listJobs')->middleware('auth');
-Route::get('/jobs/details/job={job_id}', \App\Livewire\ShowDetails\JobDetails::class)->name('details_job_list')->middleware('auth');
-Route::get('/contact', \App\Livewire\ContactPage::class)->name('contact_us')->middleware('auth');
-Route::get('/application', \App\Livewire\ApplicationComponent::class)->name('sendApplication')->middleware('auth');;
-Route::get('/gallery/{tag}', \App\Livewire\GalleryPage::class)->name('category_gallery')->middleware('auth');
+Route::get('/about', \App\Livewire\AboutPage::class)->name('about_us');
+Route::get('/legality', \App\Livewire\LegalityPage::class)->name('our_legality');
+Route::get('/services', \App\Livewire\ServicesPage::class)->name('our_services');
+Route::get('/jobs', \App\Livewire\JobsPage::class)->name('listJobs');
+Route::get('/jobs/details/job={job_id}', \App\Livewire\ShowDetails\JobDetails::class)->name('details_job_list');
+Route::get('/contact', \App\Livewire\ContactPage::class)->name('contact_us');
+Route::get('/application', \App\Livewire\ApplicationComponent::class)->name('sendApplication')->middleware('auth');
+Route::get('/gallery/{tag}', \App\Livewire\GalleryPage::class)->name('category_gallery');
 
 // Admin
 Route::get('/auth/login',[\App\Http\Controllers\AdminController::class,"loginView"])->name('login')->middleware('visitor');
@@ -39,11 +39,3 @@ Route::get('/dashboard/gallery/photo={id}',[\App\Http\Controllers\AdminControlle
 
 Route::get('/auth/logout',[\App\Http\Controllers\AdminController::class,"logout"])->name('logout');
 
-Route::get('/linkstorage', function () {
-    \Illuminate\Support\Facades\Artisan::call('storage:link');
-    echo 'Storage linked!';
-});
-
-Route::get('/removelink', function () {
-    File::delete(public_path('storage'));
-});
