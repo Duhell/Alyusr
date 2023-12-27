@@ -14,19 +14,19 @@
                         <div
                             class="text-lg-right top-right-bar d-flex justify-content-between align-items-center  mt-2 mt-lg-0 ">
                             <a href="tel:+966533416292">
-                                <span>Call Now : </span>
+                                <span class="translate-target">Call Now : </span>
                                 <span class="h4 text-white">+966533416292</span>
                             </a>
                             {{-- <a href="https://portal.yaramay.com/" target="_blank"><button type="button" class="btn btn-primary m-3" style="padding: 5px 10px!important;">login</button></a> --}}
                             @auth
                                 @if (Auth::user()->role == 0)
-                                    <a href="{{ route('logout') }}" class="text-light">Logout</a>
+                                    <a href="{{ route('logout') }}" class="text-light translate-target">Logout</a>
                                 @elseif (Auth::user()->role == 1)
-                                    <a href="{{ route('dashboard') }}" class="text-light">Go back to dashboard</a>
+                                    <a href="{{ route('dashboard') }}" class="text-light translate-target">Go back to dashboard</a>
                                 @endif
                             @endauth
                             @guest
-                                <a href="{{ route('login') }}" class="text-light">login</a>
+                                <a href="{{ route('login') }}" class="text-light translate-target">login</a>
                             @endguest
                         </div>
 
@@ -49,34 +49,34 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item my-2"><a wire:navigate href="/"
-                                class="nav-link {{ request()->routeIs('landing') ? 'text-info' : '' }}">Home</a></li>
+                                class="nav-link translate-target {{ request()->routeIs('landing') ? 'text-info' : '' }}">Home</a></li>
 
                         <li class="nav-item dropdown my-2">
-                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            <a class="nav-link translate-target dropdown-toggle" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 About Us<i class="icofont-thin-down"></i>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a wire:navigate href="/about"
-                                        class="dropdown-item {{ request()->routeIs('about_us') ? 'text-info text-dark bg-info' : '' }}">About
+                                        class="dropdown-item  {{ request()->routeIs('about_us') ? 'text-info text-dark bg-info' : '' }}">About
                                         Al Yusr</a></li>
                                 <li><a wire:navigate href="/legality"
-                                        class="dropdown-item {{ request()->routeIs('our_legality') ? 'text-info text-dark bg-info' : '' }}">Legality</a>
+                                        class="dropdown-item  {{ request()->routeIs('our_legality') ? 'text-info text-dark bg-info' : '' }}">Legality</a>
                                 </li>
 
                             </ul>
                         </li>
 
                         <li class="nav-item my-2"><a wire:navigate href="/jobs"
-                                class="nav-link {{ request()->routeIs('listJobs') || request()->routeIs('details_job_list') ? 'text-info' : '' }}">Jobs</a>
+                                class="nav-link translate-target {{ request()->routeIs('listJobs') || request()->routeIs('details_job_list') ? 'text-info' : '' }}">Jobs</a>
                         </li>
                         <li class="nav-item my-2"><a wire:navigate href="/services"
-                                class="nav-link {{ request()->routeIs('our_services') ? 'text-info' : '' }}">Services</a>
+                                class="nav-link translate-target {{ request()->routeIs('our_services') ? 'text-info' : '' }}">Services</a>
                         </li>
 
 
                         <li class="nav-item dropdown my-2">
-                            <a class="nav-link dropdown-toggle {{ request()->routeIs('category_gallery') ? 'text-info' : '' }}"
+                            <a class="nav-link translate-target  dropdown-toggle {{ request()->routeIs('category_gallery') ? 'text-info' : '' }}"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Gallery<i class="icofont-thin-down"></i>
                             </a>
@@ -95,15 +95,15 @@
 
 
                         <li class="nav-item my-2"><a wire:navigate href="/contact"
-                                class="nav-link {{ request()->routeIs('contact_us') ? 'text-info' : '' }}">Contact</a>
+                                class="nav-link translate-target {{ request()->routeIs('contact_us') ? 'text-info' : '' }}">Contact</a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a href="/application" class="btn btn-main-2 btn-icon btn-round-full my-2">
+                            <a href="/application" class="btn translate-target btn-main-2 btn-icon btn-round-full my-2">
                                 Apply Now
                             </a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a href="{{ route('sendInquiry') }}" class="btn btn-main-2 btn-icon btn-round-full my-2">
+                            <a href="{{ route('sendInquiry') }}" class="btn translate-target btn-main-2 btn-icon btn-round-full my-2">
                                 Inquire Now
                             </a>
                         </li>

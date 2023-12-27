@@ -8,12 +8,12 @@
                 <div class="feature-icon mb-4">
                     <i class="icofont-contacts"></i>
                 </div>
-                <span>24 Hours Service</span>
-                <h4 class="mb-3">Online Appointment</h4>
-                <p class="mb-4">
+                <span class="translate-target">24 Hours Service</span>
+                <h4 class="mb-3 translate-target">Online Appointment</h4>
+                <p class="mb-4 translate-target">
                     Our manpower agency is dedicated to providing round-the-clock support, ensuring that you can reach out to us 24/7 for all your staffing needs.
                 </p>
-                <a href="" class="btn btn-main btn-round-full"
+                <a href="" class="btn translate-target btn-main btn-round-full"
                     >Make a appointment</a
                 >
                 </div>
@@ -22,8 +22,8 @@
                 <div class="feature-icon mb-4">
                     <i class="icofont-ui-clock"></i>
                 </div>
-                <span>Timing schedule</span>
-                <h4 class="mb-3">Working Hours</h4>
+                <span class="translate-target">Timing schedule</span>
+                <h4 class="mb-3 translate-target">Working Hours</h4>
                 <ul class="w-hours list-unstyled">
                     <li class="d-flex justify-content-between">
                     Sun - Thurs : <span>8:00am - 6:00pm</span>
@@ -39,9 +39,9 @@
                 <div class="feature-icon mb-4">
                     <i class="icofont-support"></i>
                 </div>
-                <span>Direct Call</span>
-                <h4 class="mb-3">+966533416292</h4>
-                <p>
+                <span class="translate-target">Direct Call</span>
+                <h4 class="mb-3 translate-target">+966533416292</h4>
+                <p class="translate-target">
                     We offer the convenience of direct calls for phone consultations, ensuring seamless communication between our clients and our manpower agency.At our manpower agency, we prioritize accessibility by providing direct phone consultations to address your staffing needs promptly and effectively.
                 </p>
                 </div>

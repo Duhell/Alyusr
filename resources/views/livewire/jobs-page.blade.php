@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-9">
                     <div class="bg-primary my-3 p-3">
-                        <h1 class="text-white">Available Jobs</h1>
+                        <h1 class="text-white translate-target">Available Jobs</h1>
                     </div>
                     @forelse ( $jobs as $job )
                     <div  class="p-3 my-2 text-dark bg-white" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
@@ -17,7 +17,7 @@
                         <span class="mr-2">Country: {{ $job->job_location }}</span>
                     </div>
                     @empty
-                        <p>No Jobs Available!</p>
+                        <p class="translate-target">No Jobs Available!</p>
                     @endforelse
 
                 </div>

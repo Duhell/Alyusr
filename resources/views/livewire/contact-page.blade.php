@@ -5,8 +5,8 @@
         <div class="row">
         <div class="col-md-12">
             <div class="block text-center">
-            <span class="text-white">Contact Us</span>
-            <h1 class="text-capitalize mb-5 text-lg">Get in Touch</h1>
+            <span class="text-white translate-target">Contact Us</span>
+            <h1 class="text-capitalize mb-5 translate-target text-lg">Get in Touch</h1>
 
             <!-- <ul class="list-inline breadcumb-nav">
                 <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
@@ -26,14 +26,14 @@
             <div class="col-lg-4 col-md-6">
                 <div class="contact-block mb-4 mb-lg-0">
                 <i class="icofont-live-support"></i>
-                <h5>Call Us</h5>
+                <h5 class="translate-target">Call Us</h5>
                 +966533416292
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="contact-block mb-4 mb-lg-0">
                 <i class="icofont-support-faq"></i>
-                <h5>Email Us</h5>
+                <h5 class="translate-target">Email Us</h5>
                     <ul class="p-0" style="list-style-type: none;">
                         <li>admin@alyusr.website</li>
                         <li>omar@alyusr.website</li>
@@ -44,7 +44,7 @@
             <div class="col-lg-4 col-md-12">
                 <div class="contact-block mb-4 mb-lg-0">
                 <i class="icofont-location-pin"></i>
-                <h5>Location</h5>
+                <h5 class="translate-target">Location</h5>
                 Saudi Arabia
                 </div>
             </div>
@@ -57,9 +57,9 @@
             <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="section-title text-center">
-                <h2 class="text-md mb-2">Contact us</h2>
+                <h2 class="text-md mb-2 translate-target">Contact us</h2>
                 <div class="divider mx-auto my-4"></div>
-                <p class="mb-5">For all your manpower recruitment needs, please don't hesitate to reach out to us; we're here to help you build the perfect team.</p>
+                <p class="mb-5 translate-target">For all your manpower recruitment needs, please don't hesitate to reach out to us; we're here to help you build the perfect team.</p>
                 </div>
             </div>
             </div>

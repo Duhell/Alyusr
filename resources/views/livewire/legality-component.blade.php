@@ -4,7 +4,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-7 text-center">
                     <div class="section-title">
-                    <h2>Our Legality</h2>
+                    <h2 class="translate-target">Our Legality</h2>
                     <div class="divider mx-auto my-4"></div>
 
                     </div>
@@ -38,11 +38,12 @@
 
             <div class="row pt-3">
                 <div class="col-md-3">
-                    <router-link
-                    to="/legality"
-                    class="btn btn-main-2 btn-icon btn-round-full"
+                    <a
+                    wire:navigate
+                    href="/legality"
+                    class="btn translate-target btn-main-2 btn-icon btn-round-full"
                     >Legality<i class="icofont-simple-right ml-3"></i
-                    ></router-link>
+                    ></a>
                 </div>
 
             </div>

@@ -33,44 +33,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var initialLanguage = 'en';
-            toggleLanguage(initialLanguage);
-
-            document.querySelectorAll('.language').forEach(function(element) {
-                element.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    toggleLanguage(element.getAttribute('language'));
-                });
-            });
-        });
-
-        function toggleLanguage(language) {
-            var labels = document.querySelectorAll('.language-label');
-
-            labels.forEach(function(label) {
-                var labelText = label.getAttribute('data-original'); // Store the original text
-
-                if (!labelText) {
-                    labelText = label.textContent; // If original is not stored, get it from the current text
-                    label.setAttribute('data-original', labelText); // Store the original text
-                }
-
-                var separatorIndex = labelText.indexOf('/');
-
-                if (separatorIndex !== -1) {
-                    if (language === 'en') {
-                        // Show only the English part
-                        label.textContent = labelText.substring(0, separatorIndex);
-                    } else if (language === 'ar') {
-                        // Show both English and Arabic parts
-                        label.textContent = labelText;
-                    }
-                }
-            });
-        }
-    </script>
+    <script src="{{ asset('translate.js') }}"></script>
 </body>
 
 </html>

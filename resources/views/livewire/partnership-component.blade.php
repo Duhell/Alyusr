@@ -4,7 +4,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-7 text-center">
                     <div class="section-title">
-                    <h2>Partnership</h2>
+                    <h2 class="translate-target">Partnership</h2>
                     <div class="divider mx-auto my-4"></div>
                         <!-- <p>
                             SHUBRA AL TAIF COMPANY<br>

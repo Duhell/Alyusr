@@ -16,16 +16,17 @@
             </div>
             <div class="col-lg-4">
                 <div class="about-content pl-4 mt-4 mt-lg-0">
-                <h2 class="title-color">About Us</h2>
-                <p class="mt-4 mb-5">
+                <h2 class="title-color translate-target">About Us</h2>
+                <p class="mt-4 mb-5 translate-target">
                     We are providing manpower services with professional skills and training.we are dedicated to connecting businesses with highly skilled professionals who have undergone rigorous training, ensuring seamless workforce solutions that drive success.
                 </p>
 
-                <router-link
-                    to="/about"
-                    class="btn btn-main-2 btn-icon btn-round-full"
+                <a
+                    wire:navigate
+                    href="/about"
+                    class="btn translate-target btn-main-2 btn-icon btn-round-full"
                     >About<i class="icofont-simple-right ml-3"></i
-                ></router-link>
+                ></a>
                 </div>
             </div>
             </div>
