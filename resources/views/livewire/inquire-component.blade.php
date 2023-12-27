@@ -1,4 +1,17 @@
-<div class="w-[1228px] mx-auto">
+<div>
+    <section class="page-title bg-1">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block text-center">
+                        <span class="text-white">Client Inquiry Form</span>
+                        <h1 class="text-capitalize mb-5 text-lg">Client Inquiry Form</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section>
         <div class="container">
             <div class="row mt-5 mb-5">
