@@ -50,7 +50,7 @@
               </div>
               <hr class="my-4">
             </form>
-            <a href="{{ route('signup') }}">Create Account</a>
+            {{-- <a href="{{ route('signup') }}">Create Account</a> --}}
           </div>
         </div>
       </div>
